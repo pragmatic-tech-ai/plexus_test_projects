@@ -1,0 +1,15 @@
+{
+  "type": "architecture",
+  "name": "test_waf_architectures",
+  "version": 1,
+  "metaModel": {
+    "id": "tech-architecture",
+    "version": "0.1.0"
+  },
+  "libraries": [
+    {
+      "id": "microsoft",
+      "version": "0.1.0"
+    }
+  ]
+}

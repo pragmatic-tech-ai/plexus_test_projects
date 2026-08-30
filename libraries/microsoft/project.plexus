@@ -1,0 +1,11 @@
+{
+  "type": "library",
+  "name": "microsoft",
+  "version": 1,
+  "id": "microsoft",
+  "libVersion": "0.1.0",
+  "metaModel": {
+    "id": "tech-architecture",
+    "version": "0.1.0"
+  }
+}

@@ -15,16 +15,16 @@ published meta-model and build on it.
 ## The three building blocks — how to choose
 
 - **`primitive`** — a leaf data type constrained by a regex or a base type. Reach
-  for one when you need a validated scalar (`identifier`, `label`, `url`). Don't
-  model an entity as a primitive.
+  for one when you need a validated scalar (`Url`, `Email`, or the built-in
+  lowercase `identifier`). Don't model an entity as a primitive.
 - **`taxonomy`** — a closed, named set of values, where each value is a **class**
   of the concept it categorises (a clabject). Reach for one when a field's value
   comes from a controlled vocabulary that may carry its own fixed attributes
-  (`component-category`, `location-type`). Prefer a taxonomy over a free string
+  (`ComponentCategory`, `LocationType`). Prefer a taxonomy over a free string
   whenever the set of valid values is known.
 - **`concept`** — a first-class entity with identity, fields, relationships, and
   invariants. Reach for one for anything an author creates and connects
-  (`component`, `location`, `technology`).
+  (`Component`, `Location`, `Technology`).
 
 Rule of thumb: if instances of it get an `id` and participate in relationships,
 it's a **concept**; if it's a fixed vocabulary of kinds, it's a **taxonomy**; if
@@ -34,22 +34,24 @@ it's a validated scalar, it's a **primitive**.
 
 - **Purpose-first naming.** Name a concept for what it *is / does*, not for the
   technology behind it. Bind the technology through a relationship or an
-  `implemented-by` field, not the name.
+  `implementedBy` field, not the name.
 - **Singular concept, plural taxonomy.** A concept is a **singular** noun
-  (`technology`, `component`, `location`); the taxonomy that enumerates its
+  (`Technology`, `Component`, `Location`); the taxonomy that enumerates its
   classes is that **same noun in plural** and `represents` it —
-  `technology` → `taxonomy technologies : represents technology`. (A field-value
+  `Technology` → `taxonomy Technologies : represents Technology`. (A field-value
   taxonomy that names a categorization axis rather than a concept's classes —
-  `component-category` — is the exception.)
+  `ComponentCategory` — is the exception.)
 - **Fields carry the data; relationships carry the links.** A value that
   *belongs to* the entity is a field; a *reference to another entity* is a
-  relationship (`relationship in -> location;`).
+  relationship (`relationship in -> Location;`).
 - **Pick cardinality deliberately.** Bare = exactly one, `?` = optional,
   `[]` = many, `[+]` = one-or-more. A required single-valued field is the default
   (no suffix) — reserve `?` for genuinely optional data.
-- **No inline object types.** If a field needs structure, add a nested concept
-  and reference it. Keep concepts focused; a concept doing too much is a signal
-  to split it.
+- **Model structure as a nested concept, not an anonymous type.** A field's type
+  is always a named primitive/taxonomy/concept — never `object { … }`. If a field
+  needs structure, add a nested concept. (Authors can then fill it in inline as a
+  typed object literal — `field = ThatConcept { … }` — on the instance side.) Keep
+  concepts focused; a concept doing too much is a signal to split it.
 - **Encode rules as invariants.** Anything the model must always satisfy
   ("component ids are globally unique", "a component's location must be one its
   technology supports") belongs in an `invariant`, in prose at minimum. The
@@ -58,24 +60,31 @@ it's a validated scalar, it's a **primitive**.
 ## Presentation metadata — annotations
 
 Decorate a concept with **annotations** to control how it is presented and to
-attach typed metadata a tool can read. Declare the annotation type once, then
-`annotate` the concept (see the manual §6):
+attach typed metadata a tool can read. The prelude ships the common ones, so you
+`annotate` with them directly — no declaration needed (see the manual §6):
 
-    annotation icon { path : string; }
-
-    concept component
+    concept Component
     {
-        annotate icon  { path = "resources/component.svg"; }
+        annotate icon { path = "resources/component.svg"; }
         annotate label { text = "Component"; }
+        annotate wiki  { path = "wiki/component.md"; }
+
+        relationship implementedBy -> Technology ? { annotate iconSource { order = 1; } }
         …
     }
 
 - **`icon` and `label` are well-known** — the generated presentation reads them to
   draw each concept's chip (a raw `icon =` / `label =` attribute, where present,
   still wins). Put the concept's SVG under `presentation/` and point `path` at it.
-- **Custom annotations** (`category`, `owner`, …) are your own typed metadata;
-  they ride along in the published model and are bindable from author presentation
-  overrides.
+- **`wiki`** attaches a Markdown page (project-relative `path`); an author opens it
+  read-only from the concept's surfaces. Author the `.md` (or let an AI write it)
+  under a `wiki/` folder.
+- **`iconSource`** is a **relationship-member** annotation: when a concept has no
+  icon of its own, its icon is borrowed from a related concept, trying members in
+  ascending `order`. Declare it in the relationship body, not the concept body.
+- **Custom annotations** are your own typed metadata (they may inherit via
+  `annotation Sub : Base`); they ride along in the published model and are bindable
+  from author presentation overrides.
 - Package-level facts (author, license) go in a `package { annotate … }` block.
 
 ## Publishing identity

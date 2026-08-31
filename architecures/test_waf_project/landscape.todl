@@ -234,11 +234,5 @@ namespace test_waf_project.models
         steps = [operator ==> entra_id, operator ==> bastion, bastion ==> frontend_vmss, bastion ==> backend_vmss];
       };
     }
-    key_vault_private_link --> key_vault_private_link {
-      type = "calls";
-    };
-    key_vault --> key_vault {
-      type = "calls";
-    };
   }
 }

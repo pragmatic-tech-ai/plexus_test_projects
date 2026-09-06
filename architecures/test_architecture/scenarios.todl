@@ -1,9 +1,0 @@
-namespace pilot_project.models
-{
-  import libraries.aws;
-  import libraries.microsoft;
-  import tech_architecture;
-  
-  model pilot_projectModelsModel : libraries.aws uses microsoft_tech conforms Scenarios {
-  }
-}

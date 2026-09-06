@@ -3,6 +3,7 @@ namespace pilot_project.models
   import libraries.aws;
   import libraries.microsoft;
   import tech_architecture;
+  
   model pilot_projectModelsModel : libraries.aws uses aws_tech, categories, ingresses, microsoft_tech conforms Model {
     actor external_ai_agent {
       label = "External AI Agent";
@@ -233,7 +234,6 @@ namespace pilot_project.models
     component teams_chat {
       label = "Microsoft Teams";
       implemented_by = microsoft_tech.microsoft_teams;
-      in_block = chat_surface;
     }
     component sharepoint_chat {
       label = "SharePoint Embedded";
@@ -243,7 +243,6 @@ namespace pilot_project.models
     component dynamics_chat {
       label = "Dynamics 365";
       implemented_by = microsoft_tech.dynamics_365;
-      in_block = chat_surface;
     }
     block command_bus {
       label = "Command Bus";
@@ -537,6 +536,19 @@ namespace pilot_project.models
         entry_point = external_ai_agent;
         steps = [external_ai_agent ==> external_tool_surface, external_tool_surface ==> validator, validator ==> command_bus, platform_api ==> command_bus, command_bus ==> microsoft_agent_framework, microsoft_agent_framework ==> knowledge_index, microsoft_agent_framework ==> language_model, microsoft_agent_framework ==> service_agent];
       };
+    }
+    scenario support_ticket_resolution {
+      label = "Support Ticket Resolution";
+      outcome = "Support ticket auto-resolved via validated Graph action, or escalated to a human agent in Dynamics 365";
+      sequences = [sequence {
+        id = "autonomous_resolution";
+        entry_point = business_user;
+        steps = [business_user ==> chat_surface, teams_chat ==> business_agent, business_agent ==> agent_orchestrator, agent_orchestrator ==> knowledge_index, knowledge_index ==> ai_data_sources, agent_orchestrator ==> app_database, business_agent ==> validator, validator ==> platform_api, agent_orchestrator ==> app_database];
+      }, sequence {
+        id = "escalation_to_human";
+        entry_point = business_user;
+        steps = [business_user ==> chat_surface, teams_chat ==> business_agent, business_agent ==> agent_orchestrator, agent_orchestrator ==> knowledge_index, knowledge_index ==> ai_data_sources, agent_orchestrator ==> app_database, agent_orchestrator ==> workflow_engine, workflow_engine ==> dynamics_chat];
+      }];
     }
   }
 }

@@ -45,4 +45,5 @@ resources MetaModelPresentation {
     include colored "resources/workflow-engine.svg" as mm_icon_workflow_engine
 
     // --- Embedded content (base64) — reserved for future assets. ---
+
 }

@@ -1,0 +1,19 @@
+{
+  "name": "@pragmatic-tech-ai/microsoft",
+  "version": "0.1.0",
+  "dependencies": {
+    "@pragmatic-tech-ai/tech-architecture": "0.1.0"
+  },
+  "todl": {
+    "kind": "library",
+    "id": "microsoft"
+  },
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "model.json",
+    "src",
+    "index.js",
+    "index.d.ts"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@pragmatic-tech-ai/tech-architecture",
+  "version": "0.1.0",
+  "dependencies": {},
+  "todl": {
+    "kind": "meta-model",
+    "id": "tech-architecture"
+  },
+  "main": "index.js",
+  "types": "index.d.ts",
+  "files": [
+    "model.json",
+    "src",
+    "index.js",
+    "index.d.ts"
+  ]
+}

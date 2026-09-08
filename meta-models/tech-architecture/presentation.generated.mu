@@ -40,10 +40,10 @@ resources MetaModelPresentation {
     include colored "resources/scheduler.svg" as mm_icon_scheduler
     include colored "resources/semantic-index.svg" as mm_icon_semantic_index
     include colored "resources/service.svg" as mm_icon_service
+    include colored "resources/user.svg" as mm_icon_user
     include colored "resources/validator.svg" as mm_icon_validator
     include colored "resources/web-portal.svg" as mm_icon_web_portal
     include colored "resources/workflow-engine.svg" as mm_icon_workflow_engine
 
     // --- Embedded content (base64) — reserved for future assets. ---
-
 }

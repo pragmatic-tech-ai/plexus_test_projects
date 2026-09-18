@@ -1,0 +1,131 @@
+namespace ai_assistant_m365.models
+{
+  import libraries.evelyn;
+  import libraries.microsoft;
+  import tech_architecture;
+  model ai_assistant_m365ModelsModel : libraries.evelyn uses actors, microsoft_tech conforms Model {
+    tenant contoso_tenant {
+      label = "Contoso M365 Tenant";
+      region = "eastus";
+      in = microsoft_tech.m365;
+    }
+    subscription m365_sub {
+      label = "Contoso M365 Subscription";
+      region = "eastus";
+      in = microsoft_tech.m365;
+      in_tenant = contoso_tenant;
+    }
+    resource_group m365_rg {
+      label = "RG - M365 Workload";
+      region = "eastus";
+      in_subscription = m365_sub;
+    }
+    environment m365_prod {
+      label = "Microsoft 365 Production";
+      kind = "environments.m365_env";
+      lifecycle = "lifecycle_stages.prod";
+      region = "eastus";
+      in_tenant = contoso_tenant;
+      in_subscription = m365_sub;
+      resource_groups = m365_rg;
+    }
+    component teams {
+      label = "Microsoft Teams";
+      in = microsoft_tech.m365;
+      implemented_by = microsoft_tech.microsoft_teams;
+      slots = teams_prod;
+    }
+    slot teams_prod {
+      label = "Production";
+      environment = m365_prod;
+      in_resource_group = m365_rg;
+    }
+    component m365_copilot {
+      label = "M365 Copilot";
+      in = microsoft_tech.m365;
+      implemented_by = microsoft_tech.m365_copilot;
+      slots = m365_copilot_prod;
+    }
+    slot m365_copilot_prod {
+      label = "Production";
+      environment = m365_prod;
+      in_resource_group = m365_rg;
+    }
+    component copilot_studio {
+      label = "Copilot Studio";
+      in = microsoft_tech.m365;
+      implemented_by = microsoft_tech.copilot_studio;
+      slots = copilot_studio_prod;
+    }
+    slot copilot_studio_prod {
+      label = "Production";
+      environment = m365_prod;
+      in_resource_group = m365_rg;
+    }
+    component copilot_agent {
+      label = "Copilot Agent";
+      in = microsoft_tech.m365;
+      implemented_by = microsoft_tech.copilot_agent;
+      slots = copilot_agent_prod;
+    }
+    slot copilot_agent_prod {
+      label = "Production";
+      environment = m365_prod;
+      in_resource_group = m365_rg;
+    }
+    component sharepoint {
+      label = "SharePoint";
+      in = microsoft_tech.m365;
+      implemented_by = microsoft_tech.sharepoint_online;
+      slots = sharepoint_prod;
+    }
+    slot sharepoint_prod {
+      label = "Production";
+      environment = m365_prod;
+      in_resource_group = m365_rg;
+    }
+    component onedrive {
+      label = "OneDrive";
+      in = microsoft_tech.m365;
+      implemented_by = microsoft_tech.onedrive;
+      slots = onedrive_prod;
+    }
+    slot onedrive_prod {
+      label = "Production";
+      environment = m365_prod;
+      in_resource_group = m365_rg;
+    }
+    component power_bi {
+      label = "Power BI";
+      in = microsoft_tech.m365;
+      implemented_by = microsoft_tech.power_bi;
+      slots = power_bi_prod;
+    }
+    slot power_bi_prod {
+      label = "Production";
+      environment = m365_prod;
+      in_resource_group = m365_rg;
+    }
+    m365_copilot --> copilot_agent {
+      type = "acivates";
+    };
+    teams --> copilot_agent {
+      type = "activates";
+    };
+    copilot_agent --> copilot_studio {
+      type = "executes in";
+    };
+    copilot_studio --> onedrive {
+      type = "Converts input files";
+    };
+    copilot_studio --> sharepoint {
+      type = "stores\nconversational\ndata";
+    };
+    sharepoint --> power_bi {
+      type = "Behavioral and \nQuailty metrics";
+    };
+    power_bi --> actors.administration {
+      type = "Conversational \nData Analysis";
+    };
+  }
+}

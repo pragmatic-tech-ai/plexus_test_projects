@@ -1,0 +1,11 @@
+{
+  "type": "library",
+  "name": "evelyn_library",
+  "version": 1,
+  "id": "evelyn-library",
+  "libVersion": "0.1.0",
+  "metaModel": {
+    "id": "tech-architecture",
+    "version": "0.3.0"
+  }
+}

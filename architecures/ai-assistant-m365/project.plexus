@@ -1,0 +1,19 @@
+{
+  "type": "architecture",
+  "name": "ai-assistant-m365",
+  "version": 1,
+  "metaModel": {
+    "id": "tech-architecture",
+    "version": "0.3.0"
+  },
+  "libraries": [
+    {
+      "id": "microsoft",
+      "version": "0.1.0"
+    },
+    {
+      "id": "evelyn-library",
+      "version": "0.1.0"
+    }
+  ]
+}

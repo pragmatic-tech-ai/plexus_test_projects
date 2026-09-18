@@ -1,0 +1,41 @@
+namespace ai_assistant_m365.models
+{
+  import libraries.evelyn;
+  import libraries.microsoft;
+  import tech_architecture;
+  model ai_assistant_m365ModelsModel : libraries.evelyn uses categories, microsoft_tech conforms Scenarios {
+    component component1 {
+      label = "Copilot Studio";
+      implemented_by = microsoft_tech.copilot_studio;
+      in = microsoft_tech.power_platform;
+      category = categories.agent_authoring_studio;
+    }
+    component component2 {
+      label = "Microsoft Entra ID";
+      implemented_by = microsoft_tech.microsoft_entra_id;
+      in = microsoft_tech.azure;
+      category = categories.federated_identity_provider;
+    }
+    component component3 {
+      label = "Microsoft Entra ID Protection";
+      implemented_by = microsoft_tech.microsoft_entra_id_protection;
+      in = microsoft_tech.azure;
+      category = categories.identity_threat_detection;
+    }
+    component component4 {
+      label = "Microsoft Entra ID Governance";
+      implemented_by = microsoft_tech.microsoft_entra_id_governance;
+      in = microsoft_tech.azure;
+      category = categories.authorization_service;
+    }
+    component component6 {
+      label = "Power Automate";
+      implemented_by = microsoft_tech.power_automate;
+      in = microsoft_tech.power_platform;
+      category = categories.workflow_engine;
+    }
+    component2 --> component2 {
+      type = "calls";
+    };
+  }
+}

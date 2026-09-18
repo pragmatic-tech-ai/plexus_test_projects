@@ -4,102 +4,123 @@ namespace test_waf_architectures.models
   import tech_architecture;
   model test_waf_architecturesModelsModel : libraries.microsoft uses categories, microsoft_tech conforms Model {
     technology fab_fabric_capacity {
+      id = "fab_fabric_capacity";
       label = "Microsoft Fabric Capacity";
       available_in = microsoft_tech.azure;
       applicable_to = categories.observability_platform;
     }
     technology fab_onelake {
+      id = "fab_onelake";
       label = "OneLake";
       available_in = microsoft_tech.azure;
       applicable_to = categories.observability_platform;
     }
     technology fab_fabric_workspace {
+      id = "fab_fabric_workspace";
       label = "Fabric Workspace";
       available_in = microsoft_tech.azure;
       applicable_to = categories.observability_platform;
     }
     technology fab_dataflows_gen2 {
+      id = "fab_dataflows_gen2";
       label = "Dataflows Gen2";
       available_in = microsoft_tech.azure;
       applicable_to = categories.observability_platform;
     }
     technology fab_fabric_pipeline {
+      id = "fab_fabric_pipeline";
       label = "Fabric Data Pipeline";
       available_in = microsoft_tech.azure;
       applicable_to = categories.observability_platform;
     }
     technology fab_eventhouse {
+      id = "fab_eventhouse";
       label = "Eventhouse (KQL DB)";
       available_in = microsoft_tech.azure;
       applicable_to = categories.observability_platform;
     }
     technology fab_semantic_model {
+      id = "fab_semantic_model";
       label = "Semantic Model";
       available_in = microsoft_tech.azure;
       applicable_to = categories.observability_platform;
     }
     technology fab_on_prem_data_gateway {
+      id = "fab_on_prem_data_gateway";
       label = "On-Premises Data Gateway";
       available_in = microsoft_tech.azure;
       applicable_to = categories.observability_platform;
     }
     technology fab_azure_bastion {
+      id = "fab_azure_bastion";
       label = "Azure Bastion";
       available_in = microsoft_tech.azure;
       applicable_to = categories.zero_trust_network_access;
     }
     technology fab_azure_log_analytics {
+      id = "fab_azure_log_analytics";
       label = "Log Analytics";
       available_in = microsoft_tech.azure;
       applicable_to = categories.observability_platform;
     }
     technology fab_azure_application_insights {
+      id = "fab_azure_application_insights";
       label = "Application Insights";
       available_in = microsoft_tech.azure;
       applicable_to = categories.observability_platform;
     }
     actor fab_analyst {
+      id = "fab_analyst";
       label = "Analyst";
     }
     actor fab_data_engineer {
+      id = "fab_data_engineer";
       label = "Data Engineer";
     }
     actor fab_report_consumer {
+      id = "fab_report_consumer";
       label = "Report Consumer";
     }
     tenant fab_contoso_tenant {
+      id = "fab_contoso_tenant";
       label = "Contoso Entra Tenant";
       region = "eastus";
       in = microsoft_tech.azure;
     }
     subscription fab_connectivity_sub {
+      id = "fab_connectivity_sub";
       label = "Connectivity Subscription";
       region = "eastus";
       in = microsoft_tech.azure;
       in_tenant = fab_contoso_tenant;
     }
     subscription fab_fabric_workload_sub {
+      id = "fab_fabric_workload_sub";
       label = "Fabric Workload Subscription";
       region = "eastus";
       in = microsoft_tech.azure;
       in_tenant = fab_contoso_tenant;
     }
     resource_group fab_hub_rg {
+      id = "fab_hub_rg";
       label = "RG - Hub Connectivity";
       region = "eastus";
       in_subscription = fab_connectivity_sub;
     }
     resource_group fab_platform_rg {
+      id = "fab_platform_rg";
       label = "RG - Platform Shared";
       region = "eastus";
       in_subscription = fab_connectivity_sub;
     }
     resource_group fab_fabric_rg {
+      id = "fab_fabric_rg";
       label = "RG - Fabric Workload";
       region = "eastus";
       in_subscription = fab_fabric_workload_sub;
     }
     network fab_hub_vnet {
+      id = "fab_hub_vnet";
       label = "Hub VNet";
       region = "eastus";
       kind = "networks.dedicated_network";
@@ -108,21 +129,25 @@ namespace test_waf_architectures.models
       in_subscription = fab_connectivity_sub;
     }
     subnet fab_fw_subnet {
+      id = "fab_fw_subnet";
       label = "AzureFirewallSubnet";
       cidr = "10.0.0.0/26";
       parent = fab_hub_vnet;
     }
     subnet fab_bastion_subnet {
+      id = "fab_bastion_subnet";
       label = "AzureBastionSubnet";
       cidr = "10.0.0.64/26";
       parent = fab_hub_vnet;
     }
     subnet fab_shared_services_subnet {
+      id = "fab_shared_services_subnet";
       label = "Shared Services Subnet";
       cidr = "10.0.1.0/24";
       parent = fab_hub_vnet;
     }
     network fab_fabric_spoke_vnet {
+      id = "fab_fabric_spoke_vnet";
       label = "Fabric Spoke VNet";
       region = "eastus";
       kind = "networks.dedicated_network";
@@ -131,16 +156,19 @@ namespace test_waf_architectures.models
       in_subscription = fab_fabric_workload_sub;
     }
     subnet fab_gateway_subnet {
+      id = "fab_gateway_subnet";
       label = "Data Gateway Subnet";
       cidr = "10.70.0.0/24";
       parent = fab_fabric_spoke_vnet;
     }
     subnet fab_pe_subnet {
+      id = "fab_pe_subnet";
       label = "Private Endpoints Subnet";
       cidr = "10.70.1.0/24";
       parent = fab_fabric_spoke_vnet;
     }
     environment fab_hub_prod {
+      id = "fab_hub_prod";
       label = "Hub Production";
       kind = "environments.azure_subscription_env";
       lifecycle = "lifecycle_stages.prod";
@@ -150,6 +178,7 @@ namespace test_waf_architectures.models
       resource_groups = [fab_hub_rg, fab_platform_rg];
     }
     environment fab_fabric_prod {
+      id = "fab_fabric_prod";
       label = "Fabric Workload Production";
       kind = "environments.azure_subscription_env";
       lifecycle = "lifecycle_stages.prod";
@@ -159,231 +188,272 @@ namespace test_waf_architectures.models
       resource_groups = fab_fabric_rg;
     }
     component fab_fabric_capacity_comp {
+      id = "fab_fabric_capacity_comp";
       label = "Fabric Capacity (F-SKU)";
       in = microsoft_tech.azure;
       implemented_by = fab_fabric_capacity;
       slots = fab_fabric_capacity_comp_prod;
     }
     slot fab_fabric_capacity_comp_prod {
+      id = "fab_fabric_capacity_comp_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_fabric_rg;
     }
     component fab_onelake_comp {
+      id = "fab_onelake_comp";
       label = "OneLake";
       in = microsoft_tech.azure;
       implemented_by = fab_onelake;
       slots = fab_onelake_comp_prod;
     }
     slot fab_onelake_comp_prod {
+      id = "fab_onelake_comp_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_fabric_rg;
     }
     component fab_onelake_pl {
+      id = "fab_onelake_pl";
       label = "OneLake Private Link";
       in = microsoft_tech.azure;
       implemented_by = microsoft_tech.azure_private_link;
       slots = fab_onelake_pl_prod;
     }
     slot fab_onelake_pl_prod {
+      id = "fab_onelake_pl_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_fabric_rg;
       in_subnet = fab_pe_subnet;
     }
     component fab_bronze_workspace {
+      id = "fab_bronze_workspace";
       label = "Bronze Workspace (raw)";
       in = microsoft_tech.azure;
       implemented_by = fab_fabric_workspace;
       slots = fab_bronze_workspace_prod;
     }
     slot fab_bronze_workspace_prod {
+      id = "fab_bronze_workspace_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_fabric_rg;
     }
     component fab_silver_workspace {
+      id = "fab_silver_workspace";
       label = "Silver Workspace (cleansed)";
       in = microsoft_tech.azure;
       implemented_by = fab_fabric_workspace;
       slots = fab_silver_workspace_prod;
     }
     slot fab_silver_workspace_prod {
+      id = "fab_silver_workspace_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_fabric_rg;
     }
     component fab_gold_workspace {
+      id = "fab_gold_workspace";
       label = "Gold Workspace (curated)";
       in = microsoft_tech.azure;
       implemented_by = fab_fabric_workspace;
       slots = fab_gold_workspace_prod;
     }
     slot fab_gold_workspace_prod {
+      id = "fab_gold_workspace_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_fabric_rg;
     }
     component fab_ingest_pipeline {
+      id = "fab_ingest_pipeline";
       label = "Ingest Pipeline";
       in = microsoft_tech.azure;
       implemented_by = fab_fabric_pipeline;
       slots = fab_ingest_pipeline_prod;
     }
     slot fab_ingest_pipeline_prod {
+      id = "fab_ingest_pipeline_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_fabric_rg;
     }
     component fab_silver_dataflow {
+      id = "fab_silver_dataflow";
       label = "Silver Dataflow (Gen2)";
       in = microsoft_tech.azure;
       implemented_by = fab_dataflows_gen2;
       slots = fab_silver_dataflow_prod;
     }
     slot fab_silver_dataflow_prod {
+      id = "fab_silver_dataflow_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_fabric_rg;
     }
     component fab_gold_semantic_model {
+      id = "fab_gold_semantic_model";
       label = "Gold Semantic Model";
       in = microsoft_tech.azure;
       implemented_by = fab_semantic_model;
       slots = fab_gold_semantic_model_prod;
     }
     slot fab_gold_semantic_model_prod {
+      id = "fab_gold_semantic_model_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_fabric_rg;
     }
     component fab_realtime_eventhouse {
+      id = "fab_realtime_eventhouse";
       label = "Real-time Eventhouse";
       in = microsoft_tech.azure;
       implemented_by = fab_eventhouse;
       slots = fab_realtime_eventhouse_prod;
     }
     slot fab_realtime_eventhouse_prod {
+      id = "fab_realtime_eventhouse_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_fabric_rg;
     }
     component fab_on_prem_gateway_comp {
+      id = "fab_on_prem_gateway_comp";
       label = "On-Premises Data Gateway";
       in = microsoft_tech.azure;
       implemented_by = fab_on_prem_data_gateway;
       slots = fab_on_prem_gateway_comp_prod;
     }
     slot fab_on_prem_gateway_comp_prod {
+      id = "fab_on_prem_gateway_comp_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_fabric_rg;
       in_subnet = fab_gateway_subnet;
     }
     component fab_blob_source {
+      id = "fab_blob_source";
       label = "Blob Source (landing zone)";
       in = microsoft_tech.azure;
       implemented_by = microsoft_tech.azure_blob_storage;
       slots = fab_blob_source_prod;
     }
     slot fab_blob_source_prod {
+      id = "fab_blob_source_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_fabric_rg;
     }
     component fab_blob_source_pl {
+      id = "fab_blob_source_pl";
       label = "Blob Source Private Link";
       in = microsoft_tech.azure;
       implemented_by = microsoft_tech.azure_private_link;
       slots = fab_blob_source_pl_prod;
     }
     slot fab_blob_source_pl_prod {
+      id = "fab_blob_source_pl_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_fabric_rg;
       in_subnet = fab_pe_subnet;
     }
     component fab_key_vault {
+      id = "fab_key_vault";
       label = "Key Vault";
       in = microsoft_tech.azure;
       implemented_by = microsoft_tech.azure_key_vault;
       slots = fab_key_vault_prod;
     }
     slot fab_key_vault_prod {
+      id = "fab_key_vault_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_fabric_rg;
     }
     component fab_key_vault_pl {
+      id = "fab_key_vault_pl";
       label = "Key Vault Private Link";
       in = microsoft_tech.azure;
       implemented_by = microsoft_tech.azure_private_link;
       slots = fab_key_vault_pl_prod;
     }
     slot fab_key_vault_pl_prod {
+      id = "fab_key_vault_pl_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_fabric_rg;
       in_subnet = fab_pe_subnet;
     }
     component fab_azure_firewall_hub {
+      id = "fab_azure_firewall_hub";
       label = "Azure Firewall (hub)";
       in = microsoft_tech.azure;
       implemented_by = microsoft_tech.azure_firewall;
       slots = fab_azure_firewall_hub_prod;
     }
     slot fab_azure_firewall_hub_prod {
+      id = "fab_azure_firewall_hub_prod";
       label = "Production";
       environment = fab_hub_prod;
       in_resource_group = fab_hub_rg;
       in_subnet = fab_fw_subnet;
     }
     component fab_bastion {
+      id = "fab_bastion";
       label = "Azure Bastion";
       in = microsoft_tech.azure;
       implemented_by = fab_azure_bastion;
       slots = fab_bastion_prod;
     }
     slot fab_bastion_prod {
+      id = "fab_bastion_prod";
       label = "Production";
       environment = fab_hub_prod;
       in_resource_group = fab_hub_rg;
       in_subnet = fab_bastion_subnet;
     }
     component fab_entra_id {
+      id = "fab_entra_id";
       label = "Microsoft Entra ID";
       in = microsoft_tech.azure;
       implemented_by = microsoft_tech.microsoft_entra_id;
     }
     component fab_azure_dns {
+      id = "fab_azure_dns";
       label = "Azure DNS (private zones)";
       in = microsoft_tech.azure;
       implemented_by = microsoft_tech.azure_dns;
     }
     component fab_app_insights {
+      id = "fab_app_insights";
       label = "Application Insights";
       in = microsoft_tech.azure;
       implemented_by = fab_azure_application_insights;
       slots = fab_app_insights_prod;
     }
     slot fab_app_insights_prod {
+      id = "fab_app_insights_prod";
       label = "Production";
       environment = fab_fabric_prod;
       in_resource_group = fab_platform_rg;
     }
     component fab_log_analytics_ws {
+      id = "fab_log_analytics_ws";
       label = "Log Analytics Workspace";
       in = microsoft_tech.azure;
       implemented_by = fab_azure_log_analytics;
       slots = fab_log_analytics_ws_prod;
     }
     slot fab_log_analytics_ws_prod {
+      id = "fab_log_analytics_ws_prod";
       label = "Production";
       environment = fab_hub_prod;
       in_resource_group = fab_platform_rg;
     }
     scenario fab_ingestion_medallion {
+      id = "fab_ingestion_medallion";
       label = "Ingestion Medallion";
       outcome = "Data engineer triggers ingest pipeline that lands raw data from Blob into Bronze, then a Silver dataflow cleanses into Silver, and a Gold semantic model curates into Gold";
       sequences = sequence {
@@ -393,6 +463,7 @@ namespace test_waf_architectures.models
       };
     }
     scenario fab_realtime_alert {
+      id = "fab_realtime_alert";
       label = "Real-time Alert";
       outcome = "Real-time telemetry flows into an Eventhouse and materializes as a curated Gold workspace asset for alerting";
       sequences = sequence {
@@ -402,6 +473,7 @@ namespace test_waf_architectures.models
       };
     }
     scenario fab_report_consumption {
+      id = "fab_report_consumption";
       label = "Report Consumption";
       outcome = "A report consumer browses the Gold workspace and reads through the curated semantic model";
       sequences = sequence {

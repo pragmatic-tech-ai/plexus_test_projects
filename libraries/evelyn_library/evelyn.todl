@@ -1,0 +1,31 @@
+// Evelyn library — actor classes specific to the Evelyn AI-assistant product.
+namespace libraries.evelyn
+{
+    import tech_architecture;
+
+    taxonomy evelyn_actors : represents actor
+    {
+        description = """
+            Actor classes specific to Evelyn. Architecture models built on top
+            of `evelyn-library` classify their `actor` instances against these
+            terms in addition to the base `tech_architecture.actors` set.
+            """;
+
+        annotate toolbox { visible = true; }
+
+        term evelyn_business_user
+        {
+            label = """Paraplanner
+            Adviser
+            Oversight""";
+
+            description = """
+                Paraplanner — the primary business user of Evelyn. Uses the
+                assistant to draft client-facing materials, run analyses,
+                and pull grounded answers from enterprise content.
+                """;
+            
+            annotate icon { path = "resources/businessman.svg"; }
+        }
+    }
+}

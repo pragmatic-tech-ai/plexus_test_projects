@@ -3,7 +3,7 @@ namespace ai_assistant_m365.models
   import libraries.evelyn;
   import libraries.microsoft;
   import tech_architecture;
-  model ai_assistant_m365ModelsModel : libraries.evelyn uses evelyn_actors {
+  model ai_assistant_m365ModelsModel : libraries.evelyn uses evelyn_actors, categories conforms Model {
     evelyn_actors.evelyn_business_user --> m365_copilot {
       type = "calls";
     };

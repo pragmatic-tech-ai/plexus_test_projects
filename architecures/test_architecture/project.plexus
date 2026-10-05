@@ -2,10 +2,6 @@
   "type": "architecture",
   "name": "test_arch",
   "version": 1,
-  "metaModel": {
-    "id": "tech-architecture",
-    "version": "0.2.0"
-  },
   "libraries": [
     {
       "id": "microsoft",
@@ -14,6 +10,12 @@
     {
       "id": "aws",
       "version": "0.1.0"
+    }
+  ],
+  "metaModels": [
+    {
+      "id": "tech-architecture",
+      "version": "0.3.0"
     }
   ]
 }

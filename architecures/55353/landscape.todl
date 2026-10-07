@@ -63,7 +63,6 @@ namespace mission_critical_baseline.models
     network stamp_east_vnet {
       label = "Stamp East VNet";
       region = "eastus";
-      kind = "networks.dedicated_network";
       cidr = "10.240.0.0/16";
       in = microsoft_tech.azure;
       in_subscription = stamp_east_sub;
@@ -87,7 +86,6 @@ namespace mission_critical_baseline.models
     network stamp_west_vnet {
       label = "Stamp West VNet";
       region = "westus2";
-      kind = "networks.dedicated_network";
       cidr = "10.241.0.0/16";
       in = microsoft_tech.azure;
       in_subscription = stamp_west_sub;
@@ -111,8 +109,6 @@ namespace mission_critical_baseline.models
     // ── Environments ───────────────────────────────────────────────
     environment global_prod {
       label = "Global Production";
-      kind = "environments.azure_subscription_env";
-      lifecycle = "lifecycle_stages.prod";
       region = "eastus";
       in_tenant = contoso_tenant;
       in_subscription = global_sub;
@@ -120,8 +116,6 @@ namespace mission_critical_baseline.models
     }
     environment stamp_east_prod {
       label = "Stamp East Production";
-      kind = "environments.azure_subscription_env";
-      lifecycle = "lifecycle_stages.prod";
       region = "eastus";
       in_tenant = contoso_tenant;
       in_subscription = stamp_east_sub;
@@ -129,8 +123,6 @@ namespace mission_critical_baseline.models
     }
     environment stamp_west_prod {
       label = "Stamp West Production";
-      kind = "environments.azure_subscription_env";
-      lifecycle = "lifecycle_stages.prod";
       region = "westus2";
       in_tenant = contoso_tenant;
       in_subscription = stamp_west_sub;
@@ -347,7 +339,6 @@ namespace mission_critical_baseline.models
       label = "User Request (primary stamp: East)";
       outcome = "HTTPS response served by East US stamp; Cosmos DB read/write completes";
       sequences = sequence {
-        id = "user_via_front_door_east";
         entry_point = end_user;
         steps = [
           end_user ==> front_door,
@@ -365,7 +356,6 @@ namespace mission_critical_baseline.models
       label = "Regional Failover (East degraded → West)";
       outcome = "Front Door health probes shift traffic to the West stamp; Cosmos DB continues to serve writes";
       sequences = sequence {
-        id = "user_via_front_door_west";
         entry_point = end_user;
         steps = [
           end_user ==> front_door,
@@ -381,7 +371,6 @@ namespace mission_critical_baseline.models
       label = "Operator deploys a new container image";
       outcome = "New image is pushed to ACR and rolled out to both AKS stamps";
       sequences = sequence {
-        id = "operator_push_and_rollout";
         entry_point = operator;
         steps = [
           operator ==> entra_id,

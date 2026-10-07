@@ -22,8 +22,6 @@ namespace ai_assistant_m365.models
     }
     environment m365_prod {
       label = "Microsoft 365 Production";
-      kind = "environments.m365_env";
-      lifecycle = "lifecycle_stages.prod";
       region = "eastus";
       in_tenant = contoso_tenant;
       in_subscription = m365_sub;
@@ -107,25 +105,25 @@ namespace ai_assistant_m365.models
       in_resource_group = m365_rg;
     }
     m365_copilot --> copilot_agent {
-      type = "acivates";
+      natural = "acivates";
     };
     teams --> copilot_agent {
-      type = "activates";
+      natural = "activates";
     };
     copilot_agent --> copilot_studio {
-      type = "executes in";
+      natural = "executes in";
     };
     copilot_studio --> onedrive {
-      type = "Converts input files";
+      natural = "Converts input files";
     };
     copilot_studio --> sharepoint {
-      type = "stores\nconversational\ndata";
+      natural = "stores\nconversational\ndata";
     };
     sharepoint --> power_bi {
-      type = "Behavioral and \nQuailty metrics";
+      natural = "Behavioral and \nQuailty metrics";
     };
     power_bi --> actors.administration {
-      type = "Conversational \nData Analysis";
+      natural = "Conversational \nData Analysis";
     };
   }
 }

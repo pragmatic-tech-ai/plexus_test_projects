@@ -11,13 +11,12 @@ namespace libraries.microsoft
         // ── Locations ───────────────────────────────────────────────
         // Microsoft_stack hosting regions. Authored here (rather than in
         // each consuming architecture model) so any project that pulls
-        // in this library inherits them. `type` composes location_type
-        // flags via `|` (spec §6.5).
-        location azure          { label = "Azure";         type = cloud | paas; }
-        location m365           { label = "Microsoft 365"; type = cloud | saas; parent = azure; }
-        location power_platform { label = "Power Platform"; type = cloud | saas; parent = m365; }
-        location azure_government { label = "Azure Government (United States)"; type = cloud | paas; parent = azure; }
-        location azure_21vianet   { label = "Azure operated by 21Vianet"; type = cloud | paas; parent = azure; }
+        // in this library inherits them.
+        location azure          { label = "Azure"; }
+        location m365           { label = "Microsoft 365"; parent = azure; }
+        location power_platform { label = "Power Platform"; parent = m365; }
+        location azure_government { label = "Azure Government (United States)"; parent = azure; }
+        location azure_21vianet   { label = "Azure operated by 21Vianet"; parent = azure; }
 
         // ── Microsoft 365 ───────────────────────────────────────────
         technology microsoft_graph
@@ -26,7 +25,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft_graph.svg"; }
             available_in  = [m365];
             applicable_to = [platform_api];
-            wiki          = "microsoft-graph.md";
+            annotate wiki { path = "wiki/microsoft-graph.md"; }
         }
 
         technology microsoft_teams
@@ -35,7 +34,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/teams.svg"; }
             available_in  = [m365];
             applicable_to = [conversational_interface];
-            wiki          = "microsoft-teams.md";
+            annotate wiki { path = "wiki/microsoft-teams.md"; }
         }
 
         technology sharepoint_online
@@ -44,7 +43,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/sharepoint_online.svg"; }
             available_in  = [m365, azure];
             applicable_to = [document_store];
-            wiki          = "sharepoint-online.md";
+            annotate wiki { path = "wiki/sharepoint-online.md"; }
         }
 
         technology sharepoint_embedded
@@ -53,7 +52,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/sharepoint_online.svg"; }
             available_in  = [m365];
             applicable_to = [conversational_interface, document_store];
-            wiki          = "sharepoint-embedded.md";
+            annotate wiki { path = "wiki/sharepoint-embedded.md"; }
         }
 
         technology m365_copilot
@@ -62,7 +61,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/copilot.svg"; }
             available_in  = [m365];
             applicable_to = [conversational_interface, orchestration_engine];
-            wiki          = "m365-copilot.md";
+            annotate wiki { path = "wiki/m365-copilot.md"; }
         }
 
         technology dynamics_365
@@ -71,7 +70,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dynamics365.svg"; }
             available_in  = [m365];
             applicable_to = [conversational_interface, web_portal];
-            wiki          = "dynamics-365.md";
+            annotate wiki { path = "wiki/dynamics-365.md"; }
         }
 
         // ── Power Platform ──────────────────────────────────────────
@@ -81,7 +80,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/copilotstudio.svg"; }
             available_in  = [power_platform];
             applicable_to = [agent_authoring_studio];
-            wiki          = "copilot-studio.md";
+            annotate wiki { path = "wiki/copilot-studio.md"; }
         }
 
         technology copilot_agent
@@ -90,7 +89,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/agent.svg"; }
             available_in  = [power_platform];
             applicable_to = [ai_agent];
-            wiki          = "copilot-agent.md";
+            annotate wiki { path = "wiki/copilot-agent.md"; }
         }
 
         technology power_automate
@@ -99,7 +98,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/power_automate.svg"; }
             available_in  = [power_platform];
             applicable_to = [workflow_engine];
-            wiki          = "power-automate.md";
+            annotate wiki { path = "wiki/power-automate.md"; }
         }
 
         technology power_bi
@@ -108,7 +107,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/power_bi.svg"; }
             available_in  = [power_platform];
             applicable_to = [reporting_surface];
-            wiki          = "power-bi.md";
+            annotate wiki { path = "wiki/power-bi.md"; }
         }
 
         technology dataverse
@@ -117,7 +116,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dataverse.svg"; }
             available_in  = [power_platform];
             applicable_to = [relational_store];
-            wiki          = "dataverse.md";
+            annotate wiki { path = "wiki/dataverse.md"; }
         }
 
         technology microsoft_work_iq
@@ -126,7 +125,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/copilot.svg"; }
             available_in  = [power_platform];
             applicable_to = [api_service];
-            wiki          = "microsoft-work-iq.md";
+            annotate wiki { path = "wiki/microsoft-work-iq.md"; }
         }
 
         technology microsoft_autonomous_agent
@@ -135,7 +134,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/agent.svg"; }
             available_in  = [power_platform];
             applicable_to = [ai_agent];
-            wiki          = "microsoft-autonomous-agent.md";
+            annotate wiki { path = "wiki/microsoft-autonomous-agent.md"; }
         }
 
         // ── Azure ───────────────────────────────────────────────────
@@ -145,7 +144,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/ai_search.svg"; }
             available_in  = [azure];
             applicable_to = [semantic_index];
-            wiki          = "azure-ai-search.md";
+            annotate wiki { path = "wiki/azure-ai-search.md"; }
         }
 
         technology ai_foundry_agent_svc
@@ -154,7 +153,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/ai-foundry-agent-svc.svg"; }
             available_in  = [azure];
             applicable_to = [ai_agent, agent_runtime_service];
-            wiki          = "ai-foundry-agent-svc.md";
+            annotate wiki { path = "wiki/ai-foundry-agent-svc.md"; }
         }
 
         technology ai_foundry_multi_agent
@@ -163,7 +162,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/agent.svg"; }
             available_in  = [azure];
             applicable_to = [ai_agent, agent_runtime_service];
-            wiki          = "ai-foundry-multi-agent.md";
+            annotate wiki { path = "wiki/ai-foundry-multi-agent.md"; }
         }
 
         technology ai_foundry_iq
@@ -172,7 +171,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/agent.svg"; }
             available_in  = [azure];
             applicable_to = [agent_runtime_service];
-            wiki          = "ai-foundry-iq.md";
+            annotate wiki { path = "wiki/ai-foundry-iq.md"; }
         }
 
         technology azure_openai_gpt4o
@@ -181,7 +180,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/llm.svg"; }
             available_in  = [azure];
             applicable_to = [language_model];
-            wiki          = "azure-openai-gpt4o.md";
+            annotate wiki { path = "wiki/azure-openai-gpt4o.md"; }
         }
 
         technology azure_event_hub
@@ -190,7 +189,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure_event_hub.svg"; }
             available_in  = [azure];
             applicable_to = [event_log];
-            wiki          = "azure-event-hub.md";
+            annotate wiki { path = "wiki/azure-event-hub.md"; }
         }
 
         technology azure_service_bus
@@ -199,7 +198,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure_service_bus.svg"; }
             available_in  = [azure];
             applicable_to = [message_queue];
-            wiki          = "azure-service-bus.md";
+            annotate wiki { path = "wiki/azure-service-bus.md"; }
         }
 
         technology azure_blob_storage
@@ -208,7 +207,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure_storage_blob.svg"; }
             available_in  = [azure];
             applicable_to = [file_store];
-            wiki          = "azure-blob-storage.md";
+            annotate wiki { path = "wiki/azure-blob-storage.md"; }
         }
 
         technology azure_sql
@@ -217,7 +216,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/sql.svg"; }
             available_in  = [azure];
             applicable_to = [relational_store];
-            wiki          = "azure-sql.md";
+            annotate wiki { path = "wiki/azure-sql.md"; }
         }
 
         technology microsoft_fabric
@@ -226,7 +225,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/fabric.svg"; }
             available_in  = [azure];
             applicable_to = [data_platform_suite];
-            wiki          = "microsoft-fabric.md";
+            annotate wiki { path = "wiki/microsoft-fabric.md"; }
         }
 
         technology onelake
@@ -235,7 +234,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/onelake.svg"; }
             available_in  = [azure];
             applicable_to = [file_store];
-            wiki          = "onelake.md";
+            annotate wiki { path = "wiki/onelake.md"; }
         }
 
         // ── Microsoft Foundry Platform ──────────────────────────────
@@ -245,7 +244,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-foundry.png"; }
             available_in  = [azure, azure_government];
             applicable_to = [ai_platform_suite];
-            wiki          = "microsoft-foundry.md";
+            annotate wiki { path = "wiki/microsoft-foundry.md"; }
         }
 
         technology foundry_control_plane
@@ -254,7 +253,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/foundry-control-plane.svg"; }
             available_in  = [azure];
             applicable_to = [cloud_control_plane];
-            wiki          = "foundry-control-plane.md";
+            annotate wiki { path = "wiki/foundry-control-plane.md"; }
         }
 
         technology foundry_models
@@ -263,7 +262,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/foundry-models.png"; }
             available_in  = [azure, azure_government];
             applicable_to = [language_model];
-            wiki          = "foundry-models.md";
+            annotate wiki { path = "wiki/foundry-models.md"; }
         }
 
         technology foundry_local
@@ -272,7 +271,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/foundry-local.png"; }
             available_in  = [azure];
             applicable_to = [language_model];
-            wiki          = "foundry-local.md";
+            annotate wiki { path = "wiki/foundry-local.md"; }
         }
 
         technology ai_red_teaming_agent
@@ -281,7 +280,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/ai-red-teaming-agent.svg"; }
             available_in  = [azure];
             applicable_to = [ai_agent];
-            wiki          = "ai-red-teaming-agent.md";
+            annotate wiki { path = "wiki/ai-red-teaming-agent.md"; }
         }
 
         // ── Azure AI / Foundry Tools ────────────────────────────────
@@ -291,7 +290,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-ai-content-safety.svg"; }
             available_in  = [azure, azure_government];
             applicable_to = [content_safety_service];
-            wiki          = "azure-ai-content-safety.md";
+            annotate wiki { path = "wiki/azure-ai-content-safety.md"; }
         }
 
         technology azure_ai_immersive_reader
@@ -300,7 +299,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-ai-immersive-reader.svg"; }
             available_in  = [azure];
             applicable_to = [immersive_reader_service];
-            wiki          = "azure-ai-immersive-reader.md";
+            annotate wiki { path = "wiki/azure-ai-immersive-reader.md"; }
         }
 
         technology azure_content_understanding
@@ -309,7 +308,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-content-understanding.svg"; }
             available_in  = [azure];
             applicable_to = [content_understanding_service];
-            wiki          = "azure-content-understanding.md";
+            annotate wiki { path = "wiki/azure-content-understanding.md"; }
         }
 
         technology azure_document_intelligence
@@ -318,7 +317,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-document-intelligence.svg"; }
             available_in  = [azure, azure_government];
             applicable_to = [document_intelligence_service];
-            wiki          = "azure-document-intelligence.md";
+            annotate wiki { path = "wiki/azure-document-intelligence.md"; }
         }
 
         technology azure_face
@@ -327,7 +326,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-face.svg"; }
             available_in  = [azure];
             applicable_to = [face_cognitive_service];
-            wiki          = "azure-face.md";
+            annotate wiki { path = "wiki/azure-face.md"; }
         }
 
         technology azure_language
@@ -336,7 +335,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-language.svg"; }
             available_in  = [azure];
             applicable_to = [language_cognitive_service];
-            wiki          = "azure-language.md";
+            annotate wiki { path = "wiki/azure-language.md"; }
         }
 
         technology azure_machine_learning
@@ -345,7 +344,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-machine-learning.png"; }
             available_in  = [azure];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "azure-machine-learning.md";
+            annotate wiki { path = "wiki/azure-machine-learning.md"; }
         }
 
         technology azure_speech
@@ -354,7 +353,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-speech.svg"; }
             available_in  = [azure, azure_government, azure_21vianet];
             applicable_to = [speech_cognitive_service];
-            wiki          = "azure-speech.md";
+            annotate wiki { path = "wiki/azure-speech.md"; }
         }
 
         technology azure_translator
@@ -363,7 +362,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-translator.svg"; }
             available_in  = [azure, azure_government];
             applicable_to = [translation_cognitive_service];
-            wiki          = "azure-translator.md";
+            annotate wiki { path = "wiki/azure-translator.md"; }
         }
 
         technology azure_vision
@@ -372,7 +371,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-vision.svg"; }
             available_in  = [azure];
             applicable_to = [vision_cognitive_service];
-            wiki          = "azure-vision.md";
+            annotate wiki { path = "wiki/azure-vision.md"; }
         }
 
         // ── Azure AI / Foundry Tools (expanded) ─────────────────────
@@ -382,7 +381,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-ai-bot-service.svg"; }
             available_in  = [azure];
             applicable_to = [bot_platform];
-            wiki          = "azure-ai-bot-service.md";
+            annotate wiki { path = "wiki/azure-ai-bot-service.md"; }
         }
 
         technology azure_ai_custom_vision
@@ -391,7 +390,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-ai-custom-vision.svg"; }
             available_in  = [azure];
             applicable_to = [vision_cognitive_service];
-            wiki          = "azure-ai-custom-vision.md";
+            annotate wiki { path = "wiki/azure-ai-custom-vision.md"; }
         }
 
         technology azure_ai_foundry_models
@@ -400,7 +399,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-ai-foundry-models.svg"; }
             available_in  = [azure];
             applicable_to = [language_model];
-            wiki          = "azure-ai-foundry-models.md";
+            annotate wiki { path = "wiki/azure-ai-foundry-models.md"; }
         }
 
         technology azure_ai_services
@@ -409,7 +408,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-ai-services.svg"; }
             available_in  = [azure];
             applicable_to = [cognitive_service_suite];
-            wiki          = "azure-ai-services.md";
+            annotate wiki { path = "wiki/azure-ai-services.md"; }
         }
 
         technology azure_ai_video_indexer
@@ -418,7 +417,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-ai-video-indexer.svg"; }
             available_in  = [azure];
             applicable_to = [video_indexing_service];
-            wiki          = "azure-ai-video-indexer.md";
+            annotate wiki { path = "wiki/azure-ai-video-indexer.md"; }
         }
 
         technology azure_openai_service
@@ -427,7 +426,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-openai-service.svg"; }
             available_in  = [azure];
             applicable_to = [language_model];
-            wiki          = "azure-openai-service.md";
+            annotate wiki { path = "wiki/azure-openai-service.md"; }
         }
 
         technology foundry_tools
@@ -436,7 +435,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/foundry-tools.svg"; }
             available_in  = [azure];
             applicable_to = [api_service];
-            wiki          = "foundry-tools.md";
+            annotate wiki { path = "wiki/foundry-tools.md"; }
         }
 
         technology health_bot
@@ -445,7 +444,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/health-bot.svg"; }
             available_in  = [azure];
             applicable_to = [bot_platform];
-            wiki          = "health-bot.md";
+            annotate wiki { path = "wiki/health-bot.md"; }
         }
 
         technology azure_databricks
@@ -454,7 +453,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-databricks.svg"; }
             available_in  = [azure];
             applicable_to = [lakehouse_platform, analytical_store];
-            wiki          = "azure-databricks.md";
+            annotate wiki { path = "wiki/azure-databricks.md"; }
         }
 
         technology azure_open_datasets
@@ -463,7 +462,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-ai-services.svg"; }
             available_in  = [azure];
             applicable_to = [knowledge_source];
-            wiki          = "azure-open-datasets.md";
+            annotate wiki { path = "wiki/azure-open-datasets.md"; }
         }
 
         technology data_science_vms
@@ -472,7 +471,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/data-science-vms.svg"; }
             available_in  = [azure];
             applicable_to = [virtual_machine];
-            wiki          = "data-science-vms.md";
+            annotate wiki { path = "wiki/data-science-vms.md"; }
         }
 
         // ── Compute ────────────────────────────────────────────────
@@ -482,7 +481,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/app-service.svg"; }
             available_in  = [azure];
             applicable_to = [hosting_fabric];
-            wiki          = "app-service.md";
+            annotate wiki { path = "wiki/app-service.md"; }
         }
 
         technology azure_virtual_machines
@@ -491,7 +490,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-virtual-machines.svg"; }
             available_in  = [azure];
             applicable_to = [virtual_machine];
-            wiki          = "azure-virtual-machines.md";
+            annotate wiki { path = "wiki/azure-virtual-machines.md"; }
         }
 
         technology virtual_machine_scale_sets
@@ -500,7 +499,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/virtual-machine-scale-sets.svg"; }
             available_in  = [azure];
             applicable_to = [virtual_machine];
-            wiki          = "virtual-machine-scale-sets.md";
+            annotate wiki { path = "wiki/virtual-machine-scale-sets.md"; }
         }
 
         technology azure_spot_virtual_machines
@@ -509,7 +508,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-spot-virtual-machines.svg"; }
             available_in  = [azure];
             applicable_to = [virtual_machine];
-            wiki          = "azure-spot-virtual-machines.md";
+            annotate wiki { path = "wiki/azure-spot-virtual-machines.md"; }
         }
 
         technology azure_dedicated_host
@@ -518,7 +517,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-dedicated-host.svg"; }
             available_in  = [azure];
             applicable_to = [virtual_machine];
-            wiki          = "azure-dedicated-host.md";
+            annotate wiki { path = "wiki/azure-dedicated-host.md"; }
         }
 
         technology azure_compute_fleet
@@ -527,7 +526,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-compute-fleet.svg"; }
             available_in  = [azure];
             applicable_to = [virtual_machine];
-            wiki          = "azure-compute-fleet.md";
+            annotate wiki { path = "wiki/azure-compute-fleet.md"; }
         }
 
         technology azure_functions
@@ -536,7 +535,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-functions.svg"; }
             available_in  = [azure];
             applicable_to = [event_processor, api_service];
-            wiki          = "azure-functions.md";
+            annotate wiki { path = "wiki/azure-functions.md"; }
         }
 
         technology azure_cyclecloud
@@ -545,7 +544,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-cyclecloud.svg"; }
             available_in  = [azure];
             applicable_to = [hpc_cluster_manager];
-            wiki          = "azure-cyclecloud.md";
+            annotate wiki { path = "wiki/azure-cyclecloud.md"; }
         }
 
         technology azure_service_fabric
@@ -554,7 +553,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-service-fabric.svg"; }
             available_in  = [azure];
             applicable_to = [microservices_runtime];
-            wiki          = "azure-service-fabric.md";
+            annotate wiki { path = "wiki/azure-service-fabric.md"; }
         }
 
         technology azure_spring_apps
@@ -563,7 +562,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-spring-apps.svg"; }
             available_in  = [azure];
             applicable_to = [microservices_runtime];
-            wiki          = "azure-spring-apps.md";
+            annotate wiki { path = "wiki/azure-spring-apps.md"; }
         }
 
         technology azure_virtual_desktop
@@ -572,7 +571,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-virtual-desktop.svg"; }
             available_in  = [azure];
             applicable_to = [virtual_desktop_infrastructure];
-            wiki          = "azure-virtual-desktop.md";
+            annotate wiki { path = "wiki/azure-virtual-desktop.md"; }
         }
 
         technology azure_vmware_solution
@@ -581,7 +580,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-vmware-solution.svg"; }
             available_in  = [azure];
             applicable_to = [virtual_machine];
-            wiki          = "azure-vmware-solution.md";
+            annotate wiki { path = "wiki/azure-vmware-solution.md"; }
         }
 
         technology azure_quantum
@@ -590,7 +589,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-quantum.svg"; }
             available_in  = [azure];
             applicable_to = [quantum_compute_service];
-            wiki          = "azure-quantum.md";
+            annotate wiki { path = "wiki/azure-quantum.md"; }
         }
 
         technology batch
@@ -599,7 +598,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/batch.svg"; }
             available_in  = [azure];
             applicable_to = [batch_compute];
-            wiki          = "batch.md";
+            annotate wiki { path = "wiki/batch.md"; }
         }
 
         technology cloud_services
@@ -608,7 +607,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/cloud-services.svg"; }
             available_in  = [azure];
             applicable_to = [virtual_machine];
-            wiki          = "cloud-services.md";
+            annotate wiki { path = "wiki/cloud-services.md"; }
         }
 
         technology sql_server_on_vms
@@ -617,7 +616,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/sql-server-on-vms.svg"; }
             available_in  = [azure];
             applicable_to = [relational_store];
-            wiki          = "sql-server-on-vms.md";
+            annotate wiki { path = "wiki/sql-server-on-vms.md"; }
         }
 
         technology static_web_apps
@@ -626,7 +625,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/static-web-apps.svg"; }
             available_in  = [azure];
             applicable_to = [static_web_app_hosting];
-            wiki          = "static-web-apps.md";
+            annotate wiki { path = "wiki/static-web-apps.md"; }
         }
 
         // ── Containers ─────────────────────────────────────────────
@@ -636,7 +635,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-container-apps.svg"; }
             available_in  = [azure];
             applicable_to = [container_service];
-            wiki          = "azure-container-apps.md";
+            annotate wiki { path = "wiki/azure-container-apps.md"; }
         }
 
         technology azure_container_instances
@@ -645,7 +644,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-container-instances.svg"; }
             available_in  = [azure];
             applicable_to = [container_service];
-            wiki          = "azure-container-instances.md";
+            annotate wiki { path = "wiki/azure-container-instances.md"; }
         }
 
         technology azure_container_registry
@@ -654,7 +653,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-container-registry.svg"; }
             available_in  = [azure];
             applicable_to = [container_registry];
-            wiki          = "azure-container-registry.md";
+            annotate wiki { path = "wiki/azure-container-registry.md"; }
         }
 
         technology azure_container_storage
@@ -663,7 +662,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-container-storage.svg"; }
             available_in  = [azure];
             applicable_to = [container_persistent_volume_service];
-            wiki          = "azure-container-storage.md";
+            annotate wiki { path = "wiki/azure-container-storage.md"; }
         }
 
         technology azure_kubernetes_service
@@ -672,7 +671,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-kubernetes-service.svg"; }
             available_in  = [azure];
             applicable_to = [kubernetes_platform];
-            wiki          = "azure-kubernetes-service.md";
+            annotate wiki { path = "wiki/azure-kubernetes-service.md"; }
         }
 
         technology azure_kubernetes_fleet_manager
@@ -681,7 +680,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-kubernetes-fleet-manager.svg"; }
             available_in  = [azure];
             applicable_to = [kubernetes_platform];
-            wiki          = "azure-kubernetes-fleet-manager.md";
+            annotate wiki { path = "wiki/azure-kubernetes-fleet-manager.md"; }
         }
 
         technology azure_red_hat_openshift
@@ -690,7 +689,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-red-hat-openshift.svg"; }
             available_in  = [azure];
             applicable_to = [kubernetes_platform];
-            wiki          = "azure-red-hat-openshift.md";
+            annotate wiki { path = "wiki/azure-red-hat-openshift.md"; }
         }
 
         technology web_app_for_containers
@@ -699,7 +698,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/web-app-for-containers.svg"; }
             available_in  = [azure];
             applicable_to = [api_service, web_portal];
-            wiki          = "web-app-for-containers.md";
+            annotate wiki { path = "wiki/web-app-for-containers.md"; }
         }
 
         // ── Databases ──────────────────────────────────────────────
@@ -709,7 +708,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-cache-for-redis.svg"; }
             available_in  = [azure];
             applicable_to = [cache];
-            wiki          = "azure-cache-for-redis.md";
+            annotate wiki { path = "wiki/azure-cache-for-redis.md"; }
         }
 
         technology azure_managed_redis
@@ -718,7 +717,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-managed-redis.svg"; }
             available_in  = [azure];
             applicable_to = [cache];
-            wiki          = "azure-managed-redis.md";
+            annotate wiki { path = "wiki/azure-managed-redis.md"; }
         }
 
         technology azure_cosmos_db
@@ -727,7 +726,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-cosmos-db.svg"; }
             available_in  = [azure];
             applicable_to = [document_store];
-            wiki          = "azure-cosmos-db.md";
+            annotate wiki { path = "wiki/azure-cosmos-db.md"; }
         }
 
         technology azure_database_for_mariadb
@@ -736,7 +735,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-database-for-mariadb.svg"; }
             available_in  = [azure];
             applicable_to = [relational_store];
-            wiki          = "azure-database-for-mariadb.md";
+            annotate wiki { path = "wiki/azure-database-for-mariadb.md"; }
         }
 
         technology azure_database_for_mysql
@@ -745,7 +744,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-database-for-mysql.svg"; }
             available_in  = [azure];
             applicable_to = [relational_store];
-            wiki          = "azure-database-for-mysql.md";
+            annotate wiki { path = "wiki/azure-database-for-mysql.md"; }
         }
 
         technology azure_database_for_postgresql
@@ -754,7 +753,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-database-for-postgresql.svg"; }
             available_in  = [azure];
             applicable_to = [relational_store];
-            wiki          = "azure-database-for-postgresql.md";
+            annotate wiki { path = "wiki/azure-database-for-postgresql.md"; }
         }
 
         technology azure_database_migration_service
@@ -763,7 +762,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-database-migration-service.svg"; }
             available_in  = [azure];
             applicable_to = [database_migration_service];
-            wiki          = "azure-database-migration-service.md";
+            annotate wiki { path = "wiki/azure-database-migration-service.md"; }
         }
 
         technology azure_documentdb
@@ -772,7 +771,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-documentdb.svg"; }
             available_in  = [azure];
             applicable_to = [document_store];
-            wiki          = "azure-documentdb.md";
+            annotate wiki { path = "wiki/azure-documentdb.md"; }
         }
 
         technology azure_managed_instance_apache_cassandra
@@ -781,7 +780,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-managed-instance-apache-cassandra.svg"; }
             available_in  = [azure];
             applicable_to = [document_store];
-            wiki          = "azure-managed-instance-apache-cassandra.md";
+            annotate wiki { path = "wiki/azure-managed-instance-apache-cassandra.md"; }
         }
 
         technology azure_sql_database
@@ -790,7 +789,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-sql-database.svg"; }
             available_in  = [azure];
             applicable_to = [relational_store];
-            wiki          = "azure-sql-database.md";
+            annotate wiki { path = "wiki/azure-sql-database.md"; }
         }
 
         technology azure_sql_managed_instance
@@ -799,7 +798,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-sql-managed-instance.svg"; }
             available_in  = [azure];
             applicable_to = [relational_store];
-            wiki          = "azure-sql-managed-instance.md";
+            annotate wiki { path = "wiki/azure-sql-managed-instance.md"; }
         }
 
         technology table_storage
@@ -808,7 +807,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/table-storage.svg"; }
             available_in  = [azure];
             applicable_to = [document_store];
-            wiki          = "table-storage.md";
+            annotate wiki { path = "wiki/table-storage.md"; }
         }
 
         // ── Storage ────────────────────────────────────────────────
@@ -818,7 +817,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/archive-storage.svg"; }
             available_in  = [azure];
             applicable_to = [file_store];
-            wiki          = "archive-storage.md";
+            annotate wiki { path = "wiki/archive-storage.md"; }
         }
 
         technology azure_backup
@@ -827,7 +826,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-backup.svg"; }
             available_in  = [azure];
             applicable_to = [backup_service];
-            wiki          = "azure-backup.md";
+            annotate wiki { path = "wiki/azure-backup.md"; }
         }
 
         technology azure_data_box
@@ -836,7 +835,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-data-box.svg"; }
             available_in  = [azure];
             applicable_to = [bulk_data_import_appliance];
-            wiki          = "azure-data-box.md";
+            annotate wiki { path = "wiki/azure-data-box.md"; }
         }
 
         technology azure_data_lake_storage
@@ -845,7 +844,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-data-lake-storage.svg"; }
             available_in  = [azure];
             applicable_to = [file_store];
-            wiki          = "azure-data-lake-storage.md";
+            annotate wiki { path = "wiki/azure-data-lake-storage.md"; }
         }
 
         technology azure_disk_storage
@@ -854,7 +853,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-disk-storage.svg"; }
             available_in  = [azure];
             applicable_to = [file_store];
-            wiki          = "azure-disk-storage.md";
+            annotate wiki { path = "wiki/azure-disk-storage.md"; }
         }
 
         technology azure_elastic_san
@@ -863,7 +862,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-elastic-san.svg"; }
             available_in  = [azure];
             applicable_to = [file_store];
-            wiki          = "azure-elastic-san.md";
+            annotate wiki { path = "wiki/azure-elastic-san.md"; }
         }
 
         technology azure_files
@@ -872,7 +871,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-files.svg"; }
             available_in  = [azure];
             applicable_to = [file_store];
-            wiki          = "azure-files.md";
+            annotate wiki { path = "wiki/azure-files.md"; }
         }
 
         technology azure_managed_lustre
@@ -881,7 +880,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-managed-lustre.svg"; }
             available_in  = [azure];
             applicable_to = [file_store];
-            wiki          = "azure-managed-lustre.md";
+            annotate wiki { path = "wiki/azure-managed-lustre.md"; }
         }
 
         technology azure_netapp_files
@@ -890,7 +889,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-netapp-files.svg"; }
             available_in  = [azure];
             applicable_to = [file_store];
-            wiki          = "azure-netapp-files.md";
+            annotate wiki { path = "wiki/azure-netapp-files.md"; }
         }
 
         technology azure_storage_actions
@@ -899,7 +898,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-storage-actions.svg"; }
             available_in  = [azure];
             applicable_to = [scheduler];
-            wiki          = "azure-storage-actions.md";
+            annotate wiki { path = "wiki/azure-storage-actions.md"; }
         }
 
         technology queue_storage
@@ -908,7 +907,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/queue-storage.svg"; }
             available_in  = [azure];
             applicable_to = [message_queue];
-            wiki          = "queue-storage.md";
+            annotate wiki { path = "wiki/queue-storage.md"; }
         }
 
         technology storage_explorer
@@ -917,7 +916,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/storage-explorer.svg"; }
             available_in  = [azure];
             applicable_to = [desktop_app];
-            wiki          = "storage-explorer.md";
+            annotate wiki { path = "wiki/storage-explorer.md"; }
         }
 
         // ── Networking ─────────────────────────────────────────────
@@ -927,7 +926,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/application-gateway.svg"; }
             available_in  = [azure];
             applicable_to = [internal_api_gateway];
-            wiki          = "application-gateway.md";
+            annotate wiki { path = "wiki/application-gateway.md"; }
         }
 
         technology azure_ddos_protection
@@ -936,7 +935,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-ddos-protection.svg"; }
             available_in  = [azure];
             applicable_to = [ddos_protection];
-            wiki          = "azure-ddos-protection.md";
+            annotate wiki { path = "wiki/azure-ddos-protection.md"; }
         }
 
         technology azure_dns
@@ -945,7 +944,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-dns.svg"; }
             available_in  = [azure];
             applicable_to = [dns_service];
-            wiki          = "azure-dns.md";
+            annotate wiki { path = "wiki/azure-dns.md"; }
         }
 
         technology azure_expressroute
@@ -954,7 +953,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-expressroute.svg"; }
             available_in  = [azure];
             applicable_to = [dedicated_network_circuit];
-            wiki          = "azure-expressroute.md";
+            annotate wiki { path = "wiki/azure-expressroute.md"; }
         }
 
         technology azure_firewall
@@ -963,7 +962,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-firewall.svg"; }
             available_in  = [azure];
             applicable_to = [network_firewall];
-            wiki          = "azure-firewall.md";
+            annotate wiki { path = "wiki/azure-firewall.md"; }
         }
 
         technology azure_front_door
@@ -972,7 +971,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-front-door.svg"; }
             available_in  = [azure];
             applicable_to = [cdn_edge];
-            wiki          = "azure-front-door.md";
+            annotate wiki { path = "wiki/azure-front-door.md"; }
         }
 
         technology azure_private_link
@@ -981,7 +980,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-private-link.svg"; }
             available_in  = [azure];
             applicable_to = [private_endpoint_service];
-            wiki          = "azure-private-link.md";
+            annotate wiki { path = "wiki/azure-private-link.md"; }
         }
 
         technology load_balancer
@@ -990,7 +989,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/load-balancer.svg"; }
             available_in  = [azure];
             applicable_to = [categories.load_balancer];
-            wiki          = "load-balancer.md";
+            annotate wiki { path = "wiki/load-balancer.md"; }
         }
 
         technology nat_gateway
@@ -999,7 +998,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/nat-gateway.svg"; }
             available_in  = [azure];
             applicable_to = [categories.nat_gateway];
-            wiki          = "nat-gateway.md";
+            annotate wiki { path = "wiki/nat-gateway.md"; }
         }
 
         technology virtual_network
@@ -1008,7 +1007,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/virtual-network.svg"; }
             available_in  = [azure];
             applicable_to = [categories.virtual_network];
-            wiki          = "virtual-network.md";
+            annotate wiki { path = "wiki/virtual-network.md"; }
         }
 
         technology virtual_wan
@@ -1017,7 +1016,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/virtual-wan.svg"; }
             available_in  = [azure];
             applicable_to = [global_network_backbone];
-            wiki          = "virtual-wan.md";
+            annotate wiki { path = "wiki/virtual-wan.md"; }
         }
 
         technology vpn_gateway
@@ -1026,7 +1025,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/vpn-gateway.svg"; }
             available_in  = [azure];
             applicable_to = [categories.vpn_gateway];
-            wiki          = "vpn-gateway.md";
+            annotate wiki { path = "wiki/vpn-gateway.md"; }
         }
 
         technology web_application_firewall
@@ -1035,7 +1034,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/web-application-firewall.svg"; }
             available_in  = [azure];
             applicable_to = [categories.web_application_firewall];
-            wiki          = "web-application-firewall.md";
+            annotate wiki { path = "wiki/web-application-firewall.md"; }
         }
 
         // ── Integration ────────────────────────────────────────────
@@ -1045,7 +1044,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/api-management.svg"; }
             available_in  = [azure];
             applicable_to = [internal_api_gateway, enterprise_api_catalogue];
-            wiki          = "api-management.md";
+            annotate wiki { path = "wiki/api-management.md"; }
         }
 
         technology app_configuration
@@ -1054,7 +1053,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/app-configuration.svg"; }
             available_in  = [azure];
             applicable_to = [config_store];
-            wiki          = "app-configuration.md";
+            annotate wiki { path = "wiki/app-configuration.md"; }
         }
 
         technology azure_api_for_fhir
@@ -1063,7 +1062,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-api-for-fhir.svg"; }
             available_in  = [azure];
             applicable_to = [api_service];
-            wiki          = "azure-api-for-fhir.md";
+            annotate wiki { path = "wiki/azure-api-for-fhir.md"; }
         }
 
         technology azure_data_manager_for_agriculture
@@ -1072,7 +1071,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-data-manager-for-agriculture.svg"; }
             available_in  = [azure];
             applicable_to = [integration_adapter];
-            wiki          = "azure-data-manager-for-agriculture.md";
+            annotate wiki { path = "wiki/azure-data-manager-for-agriculture.md"; }
         }
 
         technology azure_health_data_services
@@ -1081,7 +1080,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-health-data-services.svg"; }
             available_in  = [azure];
             applicable_to = [api_service];
-            wiki          = "azure-health-data-services.md";
+            annotate wiki { path = "wiki/azure-health-data-services.md"; }
         }
 
         technology azure_logic_apps
@@ -1090,7 +1089,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-logic-apps.svg"; }
             available_in  = [azure];
             applicable_to = [workflow_engine];
-            wiki          = "azure-logic-apps.md";
+            annotate wiki { path = "wiki/azure-logic-apps.md"; }
         }
 
         technology azure_web_pubsub
@@ -1099,7 +1098,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-web-pubsub.svg"; }
             available_in  = [azure];
             applicable_to = [message_topic];
-            wiki          = "azure-web-pubsub.md";
+            annotate wiki { path = "wiki/azure-web-pubsub.md"; }
         }
 
         technology event_grid
@@ -1108,7 +1107,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/event-grid.svg"; }
             available_in  = [azure];
             applicable_to = [message_topic];
-            wiki          = "event-grid.md";
+            annotate wiki { path = "wiki/event-grid.md"; }
         }
 
         technology event_hubs
@@ -1117,7 +1116,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/event-hubs.svg"; }
             available_in  = [azure];
             applicable_to = [event_log];
-            wiki          = "event-hubs.md";
+            annotate wiki { path = "wiki/event-hubs.md"; }
         }
 
         // ── Analytics ──────────────────────────────────────────────
@@ -1127,7 +1126,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-analysis-services.svg"; }
             available_in  = [azure];
             applicable_to = [analytical_store];
-            wiki          = "azure-analysis-services.md";
+            annotate wiki { path = "wiki/azure-analysis-services.md"; }
         }
 
         technology azure_chaos_studio
@@ -1136,7 +1135,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-chaos-studio.svg"; }
             available_in  = [azure];
             applicable_to = [chaos_engineering];
-            wiki          = "azure-chaos-studio.md";
+            annotate wiki { path = "wiki/azure-chaos-studio.md"; }
         }
 
         technology azure_data_explorer
@@ -1145,7 +1144,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-data-explorer.svg"; }
             available_in  = [azure];
             applicable_to = [analytical_store];
-            wiki          = "azure-data-explorer.md";
+            annotate wiki { path = "wiki/azure-data-explorer.md"; }
         }
 
         technology azure_data_factory
@@ -1154,7 +1153,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-data-factory.svg"; }
             available_in  = [azure];
             applicable_to = [data_pipeline_orchestrator];
-            wiki          = "azure-data-factory.md";
+            annotate wiki { path = "wiki/azure-data-factory.md"; }
         }
 
         technology azure_data_lake_analytics
@@ -1163,7 +1162,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-data-lake-analytics.svg"; }
             available_in  = [azure];
             applicable_to = [bigdata_analytics_platform];
-            wiki          = "azure-data-lake-analytics.md";
+            annotate wiki { path = "wiki/azure-data-lake-analytics.md"; }
         }
 
         technology azure_stream_analytics
@@ -1172,7 +1171,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-stream-analytics.svg"; }
             available_in  = [azure];
             applicable_to = [streaming_analytics];
-            wiki          = "azure-stream-analytics.md";
+            annotate wiki { path = "wiki/azure-stream-analytics.md"; }
         }
 
         technology azure_synapse_analytics
@@ -1181,7 +1180,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-synapse-analytics.svg"; }
             available_in  = [azure];
             applicable_to = [analytical_store];
-            wiki          = "azure-synapse-analytics.md";
+            annotate wiki { path = "wiki/azure-synapse-analytics.md"; }
         }
 
         technology hdinsight
@@ -1190,7 +1189,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/hdinsight.svg"; }
             available_in  = [azure];
             applicable_to = [bigdata_analytics_platform];
-            wiki          = "hdinsight.md";
+            annotate wiki { path = "wiki/hdinsight.md"; }
         }
 
         technology microsoft_purview
@@ -1199,7 +1198,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-purview.svg"; }
             available_in  = [azure];
             applicable_to = [data_catalog];
-            wiki          = "microsoft-purview.md";
+            annotate wiki { path = "wiki/microsoft-purview.md"; }
         }
 
         technology power_bi_embedded
@@ -1208,7 +1207,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/power-bi-embedded.svg"; }
             available_in  = [azure];
             applicable_to = [reporting_surface, embedded_widget];
-            wiki          = "power-bi-embedded.md";
+            annotate wiki { path = "wiki/power-bi-embedded.md"; }
         }
 
         // ── Identity ───────────────────────────────────────────────
@@ -1218,7 +1217,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-information-protection.svg"; }
             available_in  = [azure, m365];
             applicable_to = [data_protection_service];
-            wiki          = "azure-information-protection.md";
+            annotate wiki { path = "wiki/azure-information-protection.md"; }
         }
 
         technology microsoft_entra_domain_services
@@ -1227,7 +1226,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-entra-domain-services.svg"; }
             available_in  = [azure];
             applicable_to = [federated_identity_provider];
-            wiki          = "microsoft-entra-domain-services.md";
+            annotate wiki { path = "wiki/microsoft-entra-domain-services.md"; }
         }
 
         technology microsoft_entra_external_id
@@ -1236,7 +1235,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-entra-external-id.svg"; }
             available_in  = [azure];
             applicable_to = [federated_identity_provider];
-            wiki          = "microsoft-entra-external-id.md";
+            annotate wiki { path = "wiki/microsoft-entra-external-id.md"; }
         }
 
         technology microsoft_entra_id
@@ -1245,7 +1244,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-entra-id.svg"; }
             available_in  = [azure, m365];
             applicable_to = [federated_identity_provider];
-            wiki          = "microsoft-entra-id.md";
+            annotate wiki { path = "wiki/microsoft-entra-id.md"; }
         }
 
         // ── Security ───────────────────────────────────────────────
@@ -1255,7 +1254,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-confidential-ledger.svg"; }
             available_in  = [azure];
             applicable_to = [confidential_ledger];
-            wiki          = "azure-confidential-ledger.md";
+            annotate wiki { path = "wiki/azure-confidential-ledger.md"; }
         }
 
         technology azure_dedicated_hsm
@@ -1264,7 +1263,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-dedicated-hsm.svg"; }
             available_in  = [azure];
             applicable_to = [hardware_security_module];
-            wiki          = "azure-dedicated-hsm.md";
+            annotate wiki { path = "wiki/azure-dedicated-hsm.md"; }
         }
 
         technology azure_key_vault
@@ -1273,7 +1272,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-key-vault.svg"; }
             available_in  = [azure];
             applicable_to = [secret_store];
-            wiki          = "azure-key-vault.md";
+            annotate wiki { path = "wiki/azure-key-vault.md"; }
         }
 
         technology microsoft_defender_for_cloud
@@ -1282,7 +1281,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-defender-for-cloud.svg"; }
             available_in  = [azure];
             applicable_to = [cloud_security_posture_mgmt];
-            wiki          = "microsoft-defender-for-cloud.md";
+            annotate wiki { path = "wiki/microsoft-defender-for-cloud.md"; }
         }
 
         technology microsoft_defender_easm
@@ -1291,7 +1290,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-defender-easm.svg"; }
             available_in  = [azure];
             applicable_to = [external_attack_surface_mgmt];
-            wiki          = "microsoft-defender-easm.md";
+            annotate wiki { path = "wiki/microsoft-defender-easm.md"; }
         }
 
         technology microsoft_defender_for_iot
@@ -1300,7 +1299,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-defender-for-iot.svg"; }
             available_in  = [azure];
             applicable_to = [iot_security_monitor];
-            wiki          = "microsoft-defender-for-iot.md";
+            annotate wiki { path = "wiki/microsoft-defender-for-iot.md"; }
         }
 
         technology microsoft_sentinel
@@ -1309,7 +1308,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-sentinel.svg"; }
             available_in  = [azure];
             applicable_to = [siem];
-            wiki          = "microsoft-sentinel.md";
+            annotate wiki { path = "wiki/microsoft-sentinel.md"; }
         }
 
         // ── Internet of Things ─────────────────────────────────────
@@ -1319,7 +1318,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-digital-twins.svg"; }
             available_in  = [azure];
             applicable_to = [digital_twin_store];
-            wiki          = "azure-digital-twins.md";
+            annotate wiki { path = "wiki/azure-digital-twins.md"; }
         }
 
         technology azure_iot
@@ -1328,7 +1327,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-iot.svg"; }
             available_in  = [azure];
             applicable_to = [iot_platform_suite];
-            wiki          = "azure-iot.md";
+            annotate wiki { path = "wiki/azure-iot.md"; }
         }
 
         technology azure_iot_central
@@ -1337,7 +1336,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-iot-central.svg"; }
             available_in  = [azure];
             applicable_to = [iot_saas_platform];
-            wiki          = "azure-iot-central.md";
+            annotate wiki { path = "wiki/azure-iot-central.md"; }
         }
 
         technology azure_iot_edge
@@ -1346,7 +1345,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-iot-edge.svg"; }
             available_in  = [azure];
             applicable_to = [iot_edge_runtime];
-            wiki          = "azure-iot-edge.md";
+            annotate wiki { path = "wiki/azure-iot-edge.md"; }
         }
 
         technology azure_iot_hub
@@ -1355,7 +1354,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-iot-hub.svg"; }
             available_in  = [azure];
             applicable_to = [event_log];
-            wiki          = "azure-iot-hub.md";
+            annotate wiki { path = "wiki/azure-iot-hub.md"; }
         }
 
         technology azure_iot_operations
@@ -1364,7 +1363,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-iot-operations.svg"; }
             available_in  = [azure];
             applicable_to = [iot_edge_runtime];
-            wiki          = "azure-iot-operations.md";
+            annotate wiki { path = "wiki/azure-iot-operations.md"; }
         }
 
         technology azure_maps
@@ -1373,7 +1372,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-maps.svg"; }
             available_in  = [azure];
             applicable_to = [geospatial_service];
-            wiki          = "azure-maps.md";
+            annotate wiki { path = "wiki/azure-maps.md"; }
         }
 
         technology azure_sphere
@@ -1382,7 +1381,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-sphere.svg"; }
             available_in  = [azure];
             applicable_to = [secured_microcontroller_platform];
-            wiki          = "azure-sphere.md";
+            annotate wiki { path = "wiki/azure-sphere.md"; }
         }
 
         technology notification_hubs
@@ -1391,7 +1390,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/notification-hubs.svg"; }
             available_in  = [azure];
             applicable_to = [notification_service];
-            wiki          = "notification-hubs.md";
+            annotate wiki { path = "wiki/notification-hubs.md"; }
         }
 
         technology windows_10_iot_core_services
@@ -1400,7 +1399,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/windows-10-iot-core-services.svg"; }
             available_in  = [azure];
             applicable_to = [embedded_iot_os];
-            wiki          = "windows-10-iot-core-services.md";
+            annotate wiki { path = "wiki/windows-10-iot-core-services.md"; }
         }
 
         technology windows_for_iot
@@ -1409,7 +1408,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/windows-for-iot.svg"; }
             available_in  = [azure];
             applicable_to = [embedded_iot_os];
-            wiki          = "windows-for-iot.md";
+            annotate wiki { path = "wiki/windows-for-iot.md"; }
         }
 
         // ── Hybrid + Multicloud ────────────────────────────────────
@@ -1419,7 +1418,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-arc.svg"; }
             available_in  = [azure];
             applicable_to = [hybrid_resource_manager];
-            wiki          = "azure-arc.md";
+            annotate wiki { path = "wiki/azure-arc.md"; }
         }
 
         technology aks_edge_essentials
@@ -1428,7 +1427,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/aks-edge-essentials.svg"; }
             available_in  = [azure];
             applicable_to = [edge_kubernetes_distribution];
-            wiki          = "aks-edge-essentials.md";
+            annotate wiki { path = "wiki/aks-edge-essentials.md"; }
         }
 
         technology azure_local
@@ -1437,7 +1436,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-local.svg"; }
             available_in  = [azure];
             applicable_to = [private_cloud_appliance];
-            wiki          = "azure-local.md";
+            annotate wiki { path = "wiki/azure-local.md"; }
         }
 
         technology azure_operator_nexus
@@ -1446,7 +1445,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-operator-nexus.svg"; }
             available_in  = [azure];
             applicable_to = [carrier_edge_platform];
-            wiki          = "azure-operator-nexus.md";
+            annotate wiki { path = "wiki/azure-operator-nexus.md"; }
         }
 
         technology azure_operator_service_manager
@@ -1455,7 +1454,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-operator-service-manager.svg"; }
             available_in  = [azure];
             applicable_to = [network_function_manager];
-            wiki          = "azure-operator-service-manager.md";
+            annotate wiki { path = "wiki/azure-operator-service-manager.md"; }
         }
 
         technology azure_stack_edge
@@ -1464,7 +1463,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-stack-edge.svg"; }
             available_in  = [azure];
             applicable_to = [private_cloud_appliance];
-            wiki          = "azure-stack-edge.md";
+            annotate wiki { path = "wiki/azure-stack-edge.md"; }
         }
 
         technology azure_stack_hub
@@ -1473,7 +1472,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-stack-hub.svg"; }
             available_in  = [azure];
             applicable_to = [private_cloud_appliance];
-            wiki          = "azure-stack-hub.md";
+            annotate wiki { path = "wiki/azure-stack-hub.md"; }
         }
 
         // ── Web ────────────────────────────────────────────────────
@@ -1483,7 +1482,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-communication-services.svg"; }
             available_in  = [azure];
             applicable_to = [communication_platform];
-            wiki          = "azure-communication-services.md";
+            annotate wiki { path = "wiki/azure-communication-services.md"; }
         }
 
         technology azure_fluid_relay
@@ -1492,7 +1491,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-fluid-relay.svg"; }
             available_in  = [azure];
             applicable_to = [realtime_collaboration_service];
-            wiki          = "azure-fluid-relay.md";
+            annotate wiki { path = "wiki/azure-fluid-relay.md"; }
         }
 
         technology azure_signalr_service
@@ -1501,7 +1500,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-signalr-service.svg"; }
             available_in  = [azure];
             applicable_to = [message_topic];
-            wiki          = "azure-signalr-service.md";
+            annotate wiki { path = "wiki/azure-signalr-service.md"; }
         }
 
         // ── Media ──────────────────────────────────────────────────
@@ -1511,7 +1510,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-media-player.svg"; }
             available_in  = [azure];
             applicable_to = [embedded_widget];
-            wiki          = "azure-media-player.md";
+            annotate wiki { path = "wiki/azure-media-player.md"; }
         }
 
         technology content_protection
@@ -1520,7 +1519,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/content-protection.svg"; }
             available_in  = [azure];
             applicable_to = [media_drm_service];
-            wiki          = "content-protection.md";
+            annotate wiki { path = "wiki/content-protection.md"; }
         }
 
         technology encoding
@@ -1529,7 +1528,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/encoding.svg"; }
             available_in  = [azure];
             applicable_to = [media_encoding_service];
-            wiki          = "encoding.md";
+            annotate wiki { path = "wiki/encoding.md"; }
         }
 
         technology live_on_demand_streaming
@@ -1538,7 +1537,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/live-on-demand-streaming.svg"; }
             available_in  = [azure];
             applicable_to = [live_streaming_service];
-            wiki          = "live-on-demand-streaming.md";
+            annotate wiki { path = "wiki/live-on-demand-streaming.md"; }
         }
 
         technology media_services
@@ -1547,7 +1546,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/media-services.svg"; }
             available_in  = [azure];
             applicable_to = [media_platform_suite];
-            wiki          = "media-services.md";
+            annotate wiki { path = "wiki/media-services.md"; }
         }
 
         // ── Developer Tools ────────────────────────────────────────
@@ -1557,7 +1556,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-artifacts.svg"; }
             available_in  = [azure];
             applicable_to = [artifact_registry];
-            wiki          = "azure-artifacts.md";
+            annotate wiki { path = "wiki/azure-artifacts.md"; }
         }
 
         technology azure_boards
@@ -1566,7 +1565,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-boards.svg"; }
             available_in  = [azure];
             applicable_to = [issue_tracking];
-            wiki          = "azure-boards.md";
+            annotate wiki { path = "wiki/azure-boards.md"; }
         }
 
         technology azure_devops
@@ -1575,7 +1574,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-devops.svg"; }
             available_in  = [azure];
             applicable_to = [devops_platform_suite];
-            wiki          = "azure-devops.md";
+            annotate wiki { path = "wiki/azure-devops.md"; }
         }
 
         technology azure_devtest_labs
@@ -1584,7 +1583,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-devtest-labs.svg"; }
             available_in  = [azure];
             applicable_to = [vm_lab_service];
-            wiki          = "azure-devtest-labs.md";
+            annotate wiki { path = "wiki/azure-devtest-labs.md"; }
         }
 
         technology azure_pipelines
@@ -1593,7 +1592,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-pipelines.svg"; }
             available_in  = [azure];
             applicable_to = [ci_cd_pipeline];
-            wiki          = "azure-pipelines.md";
+            annotate wiki { path = "wiki/azure-pipelines.md"; }
         }
 
         technology azure_repos
@@ -1602,7 +1601,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-repos.svg"; }
             available_in  = [azure];
             applicable_to = [source_repository];
-            wiki          = "azure-repos.md";
+            annotate wiki { path = "wiki/azure-repos.md"; }
         }
 
         technology azure_test_plans
@@ -1611,7 +1610,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-test-plans.svg"; }
             available_in  = [azure];
             applicable_to = [test_management];
-            wiki          = "azure-test-plans.md";
+            annotate wiki { path = "wiki/azure-test-plans.md"; }
         }
 
         technology azure_app_testing
@@ -1620,7 +1619,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-app-testing.svg"; }
             available_in  = [azure];
             applicable_to = [app_test_runner];
-            wiki          = "azure-app-testing.md";
+            annotate wiki { path = "wiki/azure-app-testing.md"; }
         }
 
         technology azure_deployment_environments
@@ -1629,7 +1628,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-deployment-environments.svg"; }
             available_in  = [azure];
             applicable_to = [environment_template_service];
-            wiki          = "azure-deployment-environments.md";
+            annotate wiki { path = "wiki/azure-deployment-environments.md"; }
         }
 
         technology microsoft_dev_box
@@ -1638,7 +1637,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-dev-box.svg"; }
             available_in  = [azure];
             applicable_to = [cloud_dev_workstation];
-            wiki          = "microsoft-dev-box.md";
+            annotate wiki { path = "wiki/microsoft-dev-box.md"; }
         }
 
         technology microsoft_playwright_testing
@@ -1647,7 +1646,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-playwright-testing.svg"; }
             available_in  = [azure];
             applicable_to = [web_test_runner];
-            wiki          = "microsoft-playwright-testing.md";
+            annotate wiki { path = "wiki/microsoft-playwright-testing.md"; }
         }
 
         // ── Management and Governance ──────────────────────────────
@@ -1657,7 +1656,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-resource-manager.svg"; }
             available_in  = [azure];
             applicable_to = [iac_template_engine];
-            wiki          = "arm-templates.md";
+            annotate wiki { path = "wiki/arm-templates.md"; }
         }
 
         technology automation
@@ -1666,7 +1665,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/automation.svg"; }
             available_in  = [azure];
             applicable_to = [workflow_engine];
-            wiki          = "automation.md";
+            annotate wiki { path = "wiki/automation.md"; }
         }
 
         technology azure_advisor
@@ -1675,7 +1674,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-advisor.svg"; }
             available_in  = [azure];
             applicable_to = [cloud_advisory_service];
-            wiki          = "azure-advisor.md";
+            annotate wiki { path = "wiki/azure-advisor.md"; }
         }
 
         technology azure_blueprints
@@ -1684,7 +1683,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-blueprints.svg"; }
             available_in  = [azure];
             applicable_to = [policy_engine];
-            wiki          = "azure-blueprints.md";
+            annotate wiki { path = "wiki/azure-blueprints.md"; }
         }
 
         technology azure_cloud_shell
@@ -1693,7 +1692,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-cloud-shell.svg"; }
             available_in  = [azure];
             applicable_to = [web_shell];
-            wiki          = "azure-cloud-shell.md";
+            annotate wiki { path = "wiki/azure-cloud-shell.md"; }
         }
 
         technology azure_copilot
@@ -1702,7 +1701,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-copilot.svg"; }
             available_in  = [azure];
             applicable_to = [ai_agent];
-            wiki          = "azure-copilot.md";
+            annotate wiki { path = "wiki/azure-copilot.md"; }
         }
 
         technology azure_lighthouse
@@ -1711,7 +1710,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-lighthouse.svg"; }
             available_in  = [azure];
             applicable_to = [multi_tenant_management];
-            wiki          = "azure-lighthouse.md";
+            annotate wiki { path = "wiki/azure-lighthouse.md"; }
         }
 
         technology azure_managed_applications
@@ -1720,7 +1719,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-managed-applications.svg"; }
             available_in  = [azure];
             applicable_to = [iac_template_engine];
-            wiki          = "azure-managed-applications.md";
+            annotate wiki { path = "wiki/azure-managed-applications.md"; }
         }
 
         technology azure_managed_grafana
@@ -1729,7 +1728,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/fabric.svg"; }
             available_in  = [azure];
             applicable_to = [observability_dashboard];
-            wiki          = "azure-managed-grafana.md";
+            annotate wiki { path = "wiki/azure-managed-grafana.md"; }
         }
 
         technology azure_migrate
@@ -1738,7 +1737,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-migrate.svg"; }
             available_in  = [azure];
             applicable_to = [migration_assessment_service];
-            wiki          = "azure-migrate.md";
+            annotate wiki { path = "wiki/azure-migrate.md"; }
         }
 
         technology azure_monitor
@@ -1747,7 +1746,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-monitor.svg"; }
             available_in  = [azure];
             applicable_to = [observability_platform];
-            wiki          = "azure-monitor.md";
+            annotate wiki { path = "wiki/azure-monitor.md"; }
         }
 
         technology azure_policy
@@ -1756,7 +1755,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-policy.svg"; }
             available_in  = [azure];
             applicable_to = [policy_engine];
-            wiki          = "azure-policy.md";
+            annotate wiki { path = "wiki/azure-policy.md"; }
         }
 
         technology azure_resource_manager
@@ -1765,7 +1764,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-resource-manager.svg"; }
             available_in  = [azure];
             applicable_to = [cloud_control_plane];
-            wiki          = "azure-resource-manager.md";
+            annotate wiki { path = "wiki/azure-resource-manager.md"; }
         }
 
         technology azure_resource_mover
@@ -1774,7 +1773,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-resource-mover.svg"; }
             available_in  = [azure];
             applicable_to = [resource_relocator];
-            wiki          = "azure-resource-mover.md";
+            annotate wiki { path = "wiki/azure-resource-mover.md"; }
         }
 
         technology azure_service_health
@@ -1783,7 +1782,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-service-health.svg"; }
             available_in  = [azure];
             applicable_to = [cloud_health_feed];
-            wiki          = "azure-service-health.md";
+            annotate wiki { path = "wiki/azure-service-health.md"; }
         }
 
         technology azure_site_recovery
@@ -1792,7 +1791,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-site-recovery.svg"; }
             available_in  = [azure];
             applicable_to = [disaster_recovery_service];
-            wiki          = "azure-site-recovery.md";
+            annotate wiki { path = "wiki/azure-site-recovery.md"; }
         }
 
         technology azure_update_manager
@@ -1801,7 +1800,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-update-manager.svg"; }
             available_in  = [azure];
             applicable_to = [patch_management_service];
-            wiki          = "azure-update-manager.md";
+            annotate wiki { path = "wiki/azure-update-manager.md"; }
         }
 
         technology cost_management_billing
@@ -1810,7 +1809,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/cost-management-billing.svg"; }
             available_in  = [azure];
             applicable_to = [cost_management_service];
-            wiki          = "cost-management-billing.md";
+            annotate wiki { path = "wiki/cost-management-billing.md"; }
         }
 
         technology microsoft_azure_portal
@@ -1819,7 +1818,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-azure-portal.svg"; }
             available_in  = [azure];
             applicable_to = [web_portal];
-            wiki          = "microsoft-azure-portal.md";
+            annotate wiki { path = "wiki/microsoft-azure-portal.md"; }
         }
 
         // ── Microsoft 365 productivity ──────────────────────────────
@@ -1829,7 +1828,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/exchange-online.svg"; }
             available_in  = [m365];
             applicable_to = [email_solution];
-            wiki          = "exchange-online.md";
+            annotate wiki { path = "wiki/exchange-online.md"; }
         }
 
         technology microsoft_365_archive
@@ -1838,7 +1837,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-365-archive.svg"; }
             available_in  = [m365];
             applicable_to = [archive_store];
-            wiki          = "microsoft-365-archive.md";
+            annotate wiki { path = "wiki/microsoft-365-archive.md"; }
         }
 
         technology microsoft_365_backup
@@ -1847,7 +1846,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-365-backup.svg"; }
             available_in  = [m365];
             applicable_to = [backup_service];
-            wiki          = "microsoft-365-backup.md";
+            annotate wiki { path = "wiki/microsoft-365-backup.md"; }
         }
 
         technology microsoft_bookings
@@ -1856,7 +1855,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-bookings.svg"; }
             available_in  = [m365];
             applicable_to = [scheduling_solution];
-            wiki          = "microsoft-bookings.md";
+            annotate wiki { path = "wiki/microsoft-bookings.md"; }
         }
 
         technology microsoft_clipchamp
@@ -1865,7 +1864,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-clipchamp.svg"; }
             available_in  = [m365];
             applicable_to = [video_editing_solution];
-            wiki          = "microsoft-clipchamp.md";
+            annotate wiki { path = "wiki/microsoft-clipchamp.md"; }
         }
 
         technology microsoft_forms
@@ -1874,7 +1873,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-forms.svg"; }
             available_in  = [m365];
             applicable_to = [forms_solution];
-            wiki          = "microsoft-forms.md";
+            annotate wiki { path = "wiki/microsoft-forms.md"; }
         }
 
         technology microsoft_intune
@@ -1883,7 +1882,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-intune.svg"; }
             available_in  = [m365];
             applicable_to = [endpoint_management];
-            wiki          = "microsoft-intune.md";
+            annotate wiki { path = "wiki/microsoft-intune.md"; }
         }
 
         technology microsoft_whiteboard
@@ -1892,7 +1891,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-whiteboard.png"; }
             available_in  = [m365];
             applicable_to = [realtime_collaboration_service];
-            wiki          = "microsoft-whiteboard.md";
+            annotate wiki { path = "wiki/microsoft-whiteboard.md"; }
         }
 
         technology onedrive
@@ -1901,7 +1900,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/onedrive.svg"; }
             available_in  = [m365];
             applicable_to = [file_store];
-            wiki          = "onedrive.md";
+            annotate wiki { path = "wiki/onedrive.md"; }
         }
 
         technology planner
@@ -1910,7 +1909,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/planner.svg"; }
             available_in  = [m365];
             applicable_to = [issue_tracking];
-            wiki          = "planner.md";
+            annotate wiki { path = "wiki/planner.md"; }
         }
 
         // ── Power Platform (added) ──────────────────────────────────
@@ -1920,7 +1919,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/ai-builder.svg"; }
             available_in  = [power_platform];
             applicable_to = [ai_applications_builder];
-            wiki          = "ai-builder.md";
+            annotate wiki { path = "wiki/ai-builder.md"; }
         }
 
         technology power_apps
@@ -1929,7 +1928,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/power-apps.svg"; }
             available_in  = [power_platform];
             applicable_to = [business_applications_builder];
-            wiki          = "power-apps.md";
+            annotate wiki { path = "wiki/power-apps.md"; }
         }
 
         technology power_pages
@@ -1938,7 +1937,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/power-pages.svg"; }
             available_in  = [power_platform];
             applicable_to = [web_portal];
-            wiki          = "power-pages.md";
+            annotate wiki { path = "wiki/power-pages.md"; }
         }
 
         // ── Microsoft Viva ──────────────────────────────────────────
@@ -1948,7 +1947,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-viva-engage.svg"; }
             available_in  = [m365];
             applicable_to = [conversational_interface];
-            wiki          = "microsoft-viva-engage.md";
+            annotate wiki { path = "wiki/microsoft-viva-engage.md"; }
         }
 
         // ── Microsoft Fabric workloads ──────────────────────────────
@@ -1958,7 +1957,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/fabric-data-engineering.png"; }
             available_in  = [azure];
             applicable_to = [lakehouse_platform];
-            wiki          = "fabric-data-engineering.md";
+            annotate wiki { path = "wiki/fabric-data-engineering.md"; }
         }
 
         technology fabric_data_factory
@@ -1967,7 +1966,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/fabric-data-factory.png"; }
             available_in  = [azure];
             applicable_to = [data_pipeline_orchestrator];
-            wiki          = "fabric-data-factory.md";
+            annotate wiki { path = "wiki/fabric-data-factory.md"; }
         }
 
         technology fabric_data_science
@@ -1976,7 +1975,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/fabric-data-science.png"; }
             available_in  = [azure];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "fabric-data-science.md";
+            annotate wiki { path = "wiki/fabric-data-science.md"; }
         }
 
         technology fabric_data_warehouse
@@ -1985,7 +1984,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/fabric-data-warehouse.png"; }
             available_in  = [azure];
             applicable_to = [analytical_store];
-            wiki          = "fabric-data-warehouse.md";
+            annotate wiki { path = "wiki/fabric-data-warehouse.md"; }
         }
 
         technology fabric_databases
@@ -1994,7 +1993,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/fabric-databases.svg"; }
             available_in  = [azure];
             applicable_to = [relational_store, document_store];
-            wiki          = "fabric-databases.md";
+            annotate wiki { path = "wiki/fabric-databases.md"; }
         }
 
         technology fabric_iq
@@ -2003,7 +2002,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/fabric-iq.svg"; }
             available_in  = [azure];
             applicable_to = [knowledge_graph];
-            wiki          = "fabric-iq.md";
+            annotate wiki { path = "wiki/fabric-iq.md"; }
         }
 
         technology fabric_real_time_intelligence
@@ -2012,7 +2011,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/fabric-real-time-intelligence.png"; }
             available_in  = [azure];
             applicable_to = [streaming_analytics];
-            wiki          = "fabric-real-time-intelligence.md";
+            annotate wiki { path = "wiki/fabric-real-time-intelligence.md"; }
         }
 
         // ── Microsoft Entra (added) ─────────────────────────────────
@@ -2022,7 +2021,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-entra-agent-id.png"; }
             available_in  = [azure];
             applicable_to = [non_human_identity_provider];
-            wiki          = "microsoft-entra-agent-id.md";
+            annotate wiki { path = "wiki/microsoft-entra-agent-id.md"; }
         }
 
         technology microsoft_entra_id_governance
@@ -2031,7 +2030,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-entra-id-governance.png"; }
             available_in  = [azure];
             applicable_to = [authorization_service];
-            wiki          = "microsoft-entra-id-governance.md";
+            annotate wiki { path = "wiki/microsoft-entra-id-governance.md"; }
         }
 
         technology microsoft_entra_id_protection
@@ -2040,7 +2039,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-entra-id-protection.png"; }
             available_in  = [azure];
             applicable_to = [identity_threat_detection];
-            wiki          = "microsoft-entra-id-protection.md";
+            annotate wiki { path = "wiki/microsoft-entra-id-protection.md"; }
         }
 
         technology microsoft_entra_internet_access
@@ -2049,7 +2048,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-entra-internet-access.png"; }
             available_in  = [azure];
             applicable_to = [secure_web_gateway];
-            wiki          = "microsoft-entra-internet-access.md";
+            annotate wiki { path = "wiki/microsoft-entra-internet-access.md"; }
         }
 
         technology microsoft_entra_private_access
@@ -2058,7 +2057,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-entra-private-access.png"; }
             available_in  = [azure];
             applicable_to = [zero_trust_network_access];
-            wiki          = "microsoft-entra-private-access.md";
+            annotate wiki { path = "wiki/microsoft-entra-private-access.md"; }
         }
 
         technology microsoft_entra_verified_id
@@ -2067,7 +2066,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-entra-verified-id.png"; }
             available_in  = [azure];
             applicable_to = [federated_identity_provider];
-            wiki          = "microsoft-entra-verified-id.md";
+            annotate wiki { path = "wiki/microsoft-entra-verified-id.md"; }
         }
 
         technology microsoft_entra_workload_id
@@ -2076,7 +2075,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/microsoft-entra-workload-id.png"; }
             available_in  = [azure];
             applicable_to = [non_human_identity_provider];
-            wiki          = "microsoft-entra-workload-id.md";
+            annotate wiki { path = "wiki/microsoft-entra-workload-id.md"; }
         }
 
         // ── Dynamics 365 sub_apps ───────────────────────────────────
@@ -2086,7 +2085,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dynamics-365-business-central.svg"; }
             available_in  = [m365];
             applicable_to = [smb_erp_solution];
-            wiki          = "dynamics-365-business-central.md";
+            annotate wiki { path = "wiki/dynamics-365-business-central.md"; }
         }
 
         technology dynamics_365_commerce
@@ -2095,7 +2094,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dynamics-365-commerce.svg"; }
             available_in  = [m365];
             applicable_to = [enterprise_erp_solution];
-            wiki          = "dynamics-365-commerce.md";
+            annotate wiki { path = "wiki/dynamics-365-commerce.md"; }
         }
 
         technology dynamics_365_contact_center
@@ -2104,7 +2103,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dynamics-365-contact-center.svg"; }
             available_in  = [m365];
             applicable_to = [conversational_interface, bot_platform];
-            wiki          = "dynamics-365-contact-center.md";
+            annotate wiki { path = "wiki/dynamics-365-contact-center.md"; }
         }
 
         technology dynamics_365_customer_insights
@@ -2113,7 +2112,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dynamics-365-customer-insights.svg"; }
             available_in  = [m365];
             applicable_to = [analytical_store, knowledge_source];
-            wiki          = "dynamics-365-customer-insights.md";
+            annotate wiki { path = "wiki/dynamics-365-customer-insights.md"; }
         }
 
         technology dynamics_365_customer_service
@@ -2122,7 +2121,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dynamics-365-customer-service.svg"; }
             available_in  = [m365];
             applicable_to = [web_portal, conversational_interface];
-            wiki          = "dynamics-365-customer-service.md";
+            annotate wiki { path = "wiki/dynamics-365-customer-service.md"; }
         }
 
         technology dynamics_365_customer_voice
@@ -2131,7 +2130,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dynamics-365-customer-voice.svg"; }
             available_in  = [m365];
             applicable_to = [enterprise_feedback_management_solution];
-            wiki          = "dynamics-365-customer-voice.md";
+            annotate wiki { path = "wiki/dynamics-365-customer-voice.md"; }
         }
 
         technology dynamics_365_field_service
@@ -2140,7 +2139,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dynamics-365-field-service.svg"; }
             available_in  = [m365];
             applicable_to = [web_portal, workflow_engine];
-            wiki          = "dynamics-365-field-service.md";
+            annotate wiki { path = "wiki/dynamics-365-field-service.md"; }
         }
 
         technology dynamics_365_finance
@@ -2149,7 +2148,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dynamics-365-finance.svg"; }
             available_in  = [m365];
             applicable_to = [enterprise_erp_solution];
-            wiki          = "dynamics-365-finance.md";
+            annotate wiki { path = "wiki/dynamics-365-finance.md"; }
         }
 
         technology dynamics_365_human_resources
@@ -2158,7 +2157,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dynamics-365-human-resources.svg"; }
             available_in  = [m365];
             applicable_to = [enterprise_erp_solution];
-            wiki          = "dynamics-365-human-resources.md";
+            annotate wiki { path = "wiki/dynamics-365-human-resources.md"; }
         }
 
         technology dynamics_365_intelligent_order_management
@@ -2167,7 +2166,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dynamics-365-intelligent-order-management.svg"; }
             available_in  = [m365];
             applicable_to = [workflow_engine];
-            wiki          = "dynamics-365-intelligent-order-management.md";
+            annotate wiki { path = "wiki/dynamics-365-intelligent-order-management.md"; }
         }
 
         technology dynamics_365_project_operations
@@ -2176,7 +2175,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dynamics-365-project-operations.svg"; }
             available_in  = [m365];
             applicable_to = [enterprise_erp_solution];
-            wiki          = "dynamics-365-project-operations.md";
+            annotate wiki { path = "wiki/dynamics-365-project-operations.md"; }
         }
 
         technology dynamics_365_remote_assist
@@ -2185,7 +2184,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dynamics-365-remote-assist.svg"; }
             available_in  = [m365];
             applicable_to = [communication_platform];
-            wiki          = "dynamics-365-remote-assist.md";
+            annotate wiki { path = "wiki/dynamics-365-remote-assist.md"; }
         }
 
         technology dynamics_365_sales
@@ -2194,7 +2193,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dynamics-365-sales.svg"; }
             available_in  = [m365];
             applicable_to = [web_portal, workflow_engine];
-            wiki          = "dynamics-365-sales.md";
+            annotate wiki { path = "wiki/dynamics-365-sales.md"; }
         }
 
         technology dynamics_365_supply_chain_management
@@ -2203,7 +2202,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/dynamics-365-supply-chain-management.svg"; }
             available_in  = [m365];
             applicable_to = [enterprise_erp_solution];
-            wiki          = "dynamics-365-supply-chain-management.md";
+            annotate wiki { path = "wiki/dynamics-365-supply-chain-management.md"; }
         }
 
         // ── Azure misc (added) ──────────────────────────────────────
@@ -2213,7 +2212,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-lab-services.svg"; }
             available_in  = [azure];
             applicable_to = [vm_lab_service];
-            wiki          = "azure-lab-services.md";
+            annotate wiki { path = "wiki/azure-lab-services.md"; }
         }
 
         technology azure_data_share
@@ -2222,7 +2221,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-data-share.svg"; }
             available_in  = [azure];
             applicable_to = [knowledge_source];
-            wiki          = "azure-data-share.md";
+            annotate wiki { path = "wiki/azure-data-share.md"; }
         }
 
         technology azure_data_manager_for_energy
@@ -2231,7 +2230,7 @@ namespace libraries.microsoft
             annotate icon { path = "resources/azure-data-manager-for-energy.svg"; }
             available_in  = [azure];
             applicable_to = [knowledge_source];
-            wiki          = "azure-data-manager-for-energy.md";
+            annotate wiki { path = "wiki/azure-data-manager-for-energy.md"; }
         }
     }
 }

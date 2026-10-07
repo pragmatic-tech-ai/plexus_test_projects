@@ -43,7 +43,6 @@ namespace test_waf_project.models
     network workload_vnet {
       label = "Workload VNet";
       region = "eastus";
-      kind = "networks.dedicated_network";
       cidr = "10.240.0.0/21";
       in = microsoft_tech.azure;
       in_subscription = workload_sub;
@@ -80,8 +79,6 @@ namespace test_waf_project.models
     }
     environment azure_prod {
       label = "Azure Production";
-      kind = "environments.azure_subscription_env";
-      lifecycle = "lifecycle_stages.prod";
       region = "eastus";
       in_tenant = contoso_tenant;
       in_subscription = workload_sub;
@@ -220,7 +217,6 @@ namespace test_waf_project.models
       label = "Workload User Request";
       outcome = "HTTPS response from the internal API is delivered to the workload user";
       sequences = sequence {
-        id = "user_to_backend";
         entry_point = workload_user;
         steps = [workload_user ==> app_gateway, app_gateway ==> key_vault, app_gateway ==> frontend_vmss, frontend_vmss ==> internal_lb, internal_lb ==> backend_vmss, backend_vmss ==> key_vault_private_link, key_vault_private_link ==> key_vault];
       };
@@ -229,7 +225,6 @@ namespace test_waf_project.models
       label = "Operator Access via Bastion";
       outcome = "Operator obtains a shell on a workload VM without any VM exposing a public IP";
       sequences = sequence {
-        id = "operator_via_bastion";
         entry_point = operator;
         steps = [operator ==> entra_id, operator ==> bastion, bastion ==> frontend_vmss, bastion ==> backend_vmss];
       };

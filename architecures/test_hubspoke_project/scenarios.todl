@@ -4,12 +4,10 @@ namespace test_waf_architectures.models
   import tech_architecture;
   model test_waf_architecturesModelsModel : libraries.microsoft uses categories, microsoft_tech conforms Scenarios {
     component component1 {
-      id = "component1";
       label = "Desktop App";
       category = categories.desktop_app;
     }
     component component2 {
-      id = "component2";
       label = "SharePoint";
       implemented_by = microsoft_tech.sharepoint_online;
       in = microsoft_tech.m365;

@@ -34,8 +34,6 @@ namespace ai_assistant_m365.models
       in = microsoft_tech.power_platform;
       category = categories.workflow_engine;
     }
-    component2 --> component2 {
-      type = "calls";
-    };
+    component2 --> component2;
   }
 }

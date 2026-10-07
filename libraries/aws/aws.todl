@@ -19,12 +19,12 @@ namespace libraries.aws
         // ── Locations ───────────────────────────────────────────────
         // AWS_stack hosting tiers. `type` composes location_type flags
         // via `|` (spec §6.5).
-        location aws                  { label = "AWS";                    type = cloud | paas; }
-        location aws_govcloud         { label = "AWS GovCloud (US)";      type = cloud | paas; parent = aws; }
-        location aws_china            { label = "AWS China";              type = cloud | paas; parent = aws; }
-        location aws_local_zones      { label = "AWS Local Zones";        type = cloud | paas; parent = aws; }
-        location aws_wavelength_zones { label = "AWS Wavelength Zones";   type = cloud | paas; parent = aws; }
-        location aws_outposts         { label = "AWS Outposts";           type = physical | on_premises; }
+        location aws                  { label = "AWS"; }
+        location aws_govcloud         { label = "AWS GovCloud (US)"; parent = aws; }
+        location aws_china            { label = "AWS China"; parent = aws; }
+        location aws_local_zones      { label = "AWS Local Zones"; parent = aws; }
+        location aws_wavelength_zones { label = "AWS Wavelength Zones"; parent = aws; }
+        location aws_outposts         { label = "AWS Outposts"; }
 
         // ── Networking and content delivery ─────────────────────────
         technology amazon_api_gateway
@@ -33,7 +33,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-api-gateway.svg"; }
             available_in  = [aws];
             applicable_to = [internal_api_gateway];
-            wiki          = "amazon-api-gateway.md";
+            annotate wiki { path = "wiki/amazon-api-gateway.md"; }
         }
 
         technology amazon_cloudfront
@@ -42,7 +42,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-cloudfront.svg"; }
             available_in  = [aws];
             applicable_to = [cdn_edge];
-            wiki          = "amazon-cloudfront.md";
+            annotate wiki { path = "wiki/amazon-cloudfront.md"; }
         }
 
         technology amazon_route_53
@@ -51,7 +51,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-route-53.svg"; }
             available_in  = [aws];
             applicable_to = [dns_service];
-            wiki          = "amazon-route-53.md";
+            annotate wiki { path = "wiki/amazon-route-53.md"; }
         }
 
         technology amazon_vpc
@@ -60,7 +60,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-vpc.svg"; }
             available_in  = [aws];
             applicable_to = [virtual_network];
-            wiki          = "amazon-vpc.md";
+            annotate wiki { path = "wiki/amazon-vpc.md"; }
         }
 
         technology amazon_vpc_lattice
@@ -69,7 +69,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-vpc-lattice.svg"; }
             available_in  = [aws];
             applicable_to = [virtual_network];
-            wiki          = "amazon-vpc-lattice.md";
+            annotate wiki { path = "wiki/amazon-vpc-lattice.md"; }
         }
 
         technology aws_app_mesh
@@ -78,7 +78,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-app-mesh.svg"; }
             available_in  = [aws];
             applicable_to = [virtual_network];
-            wiki          = "aws-app-mesh.md";
+            annotate wiki { path = "wiki/aws-app-mesh.md"; }
         }
 
         technology aws_cloud_map
@@ -87,7 +87,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-cloud-map.svg"; }
             available_in  = [aws];
             applicable_to = [dns_service];
-            wiki          = "aws-cloud-map.md";
+            annotate wiki { path = "wiki/aws-cloud-map.md"; }
         }
 
         technology aws_direct_connect
@@ -96,7 +96,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-direct-connect.svg"; }
             available_in  = [aws];
             applicable_to = [dedicated_network_circuit];
-            wiki          = "aws-direct-connect.md";
+            annotate wiki { path = "wiki/aws-direct-connect.md"; }
         }
 
         technology aws_global_accelerator
@@ -105,7 +105,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-global-accelerator.svg"; }
             available_in  = [aws];
             applicable_to = [global_network_backbone];
-            wiki          = "aws-global-accelerator.md";
+            annotate wiki { path = "wiki/aws-global-accelerator.md"; }
         }
 
         technology aws_private_5g
@@ -113,7 +113,7 @@ namespace libraries.aws
             label         = "AWS Private 5G";
             available_in  = [aws];
             applicable_to = [carrier_edge_platform];
-            wiki          = "aws-private-5g.md";
+            annotate wiki { path = "wiki/aws-private-5g.md"; }
         }
 
         technology aws_privatelink
@@ -122,7 +122,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-privatelink.svg"; }
             available_in  = [aws];
             applicable_to = [private_endpoint_service];
-            wiki          = "aws-privatelink.md";
+            annotate wiki { path = "wiki/aws-privatelink.md"; }
         }
 
         technology aws_transit_gateway
@@ -131,7 +131,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-transit-gateway.svg"; }
             available_in  = [aws];
             applicable_to = [virtual_network];
-            wiki          = "aws-transit-gateway.md";
+            annotate wiki { path = "wiki/aws-transit-gateway.md"; }
         }
 
         technology aws_verified_access
@@ -140,7 +140,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-verified-access.svg"; }
             available_in  = [aws];
             applicable_to = [authorization_service];
-            wiki          = "aws-verified-access.md";
+            annotate wiki { path = "wiki/aws-verified-access.md"; }
         }
 
         technology aws_direct_connect_shortform
@@ -149,7 +149,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-direct-connect-shortform.svg"; }
             available_in  = [aws];
             applicable_to = [dedicated_network_circuit];
-            wiki          = "aws-direct-connect-shortform.md";
+            annotate wiki { path = "wiki/aws-direct-connect-shortform.md"; }
         }
 
         technology elastic_load_balancing
@@ -158,7 +158,7 @@ namespace libraries.aws
             annotate icon { path = "resources/elastic-load-balancing.svg"; }
             available_in  = [aws];
             applicable_to = [load_balancer];
-            wiki          = "elastic-load-balancing.md";
+            annotate wiki { path = "wiki/elastic-load-balancing.md"; }
         }
 
         technology integrated_private_wireless
@@ -166,7 +166,7 @@ namespace libraries.aws
             label         = "Integrated Private Wireless on AWS";
             available_in  = [aws, aws_local_zones, aws_outposts];
             applicable_to = [carrier_edge_platform];
-            wiki          = "integrated-private-wireless.md";
+            annotate wiki { path = "wiki/integrated-private-wireless.md"; }
         }
 
         technology site_to_site_vpn
@@ -175,7 +175,7 @@ namespace libraries.aws
             annotate icon { path = "resources/site-to-site-vpn.svg"; }
             available_in  = [aws];
             applicable_to = [vpn_gateway];
-            wiki          = "site-to-site-vpn.md";
+            annotate wiki { path = "wiki/site-to-site-vpn.md"; }
         }
 
         // ── Application integration ─────────────────────────────────
@@ -185,7 +185,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-appflow.svg"; }
             available_in  = [aws];
             applicable_to = [integration_adapter];
-            wiki          = "amazon-appflow.md";
+            annotate wiki { path = "wiki/amazon-appflow.md"; }
         }
 
         technology amazon_eventbridge
@@ -194,7 +194,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-eventbridge.svg"; }
             available_in  = [aws];
             applicable_to = [event_processor, message_topic];
-            wiki          = "amazon-eventbridge.md";
+            annotate wiki { path = "wiki/amazon-eventbridge.md"; }
         }
 
         technology amazon_mq
@@ -203,7 +203,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-mq.svg"; }
             available_in  = [aws];
             applicable_to = [message_queue];
-            wiki          = "amazon-mq.md";
+            annotate wiki { path = "wiki/amazon-mq.md"; }
         }
 
         technology amazon_mwaa
@@ -212,7 +212,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-mwaa.svg"; }
             available_in  = [aws];
             applicable_to = [data_pipeline_orchestrator];
-            wiki          = "amazon-mwaa.md";
+            annotate wiki { path = "wiki/amazon-mwaa.md"; }
         }
 
         technology amazon_sns
@@ -221,7 +221,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-sns.svg"; }
             available_in  = [aws];
             applicable_to = [message_topic, notification_service];
-            wiki          = "amazon-sns.md";
+            annotate wiki { path = "wiki/amazon-sns.md"; }
         }
 
         technology amazon_sqs
@@ -230,7 +230,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-sqs.svg"; }
             available_in  = [aws];
             applicable_to = [message_queue];
-            wiki          = "amazon-sqs.md";
+            annotate wiki { path = "wiki/amazon-sqs.md"; }
         }
 
         technology amazon_swf
@@ -238,7 +238,7 @@ namespace libraries.aws
             label         = "Amazon Simple Workflow Service";
             available_in  = [aws];
             applicable_to = [workflow_engine];
-            wiki          = "amazon-swf.md";
+            annotate wiki { path = "wiki/amazon-swf.md"; }
         }
 
         technology aws_b2b_data_interchange
@@ -247,7 +247,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-b2b-data-interchange.svg"; }
             available_in  = [aws];
             applicable_to = [integration_adapter, partner_integration_endpoint];
-            wiki          = "aws-b2b-data-interchange.md";
+            annotate wiki { path = "wiki/aws-b2b-data-interchange.md"; }
         }
 
         technology aws_step_functions
@@ -256,7 +256,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-step-functions.svg"; }
             available_in  = [aws];
             applicable_to = [workflow_engine];
-            wiki          = "aws-step-functions.md";
+            annotate wiki { path = "wiki/aws-step-functions.md"; }
         }
 
         // ── Analytics ───────────────────────────────────────────────
@@ -266,7 +266,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-athena.svg"; }
             available_in  = [aws];
             applicable_to = [analytical_store];
-            wiki          = "amazon-athena.md";
+            annotate wiki { path = "wiki/amazon-athena.md"; }
         }
 
         technology amazon_cloudsearch
@@ -275,7 +275,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-cloudsearch.svg"; }
             available_in  = [aws];
             applicable_to = [semantic_index];
-            wiki          = "amazon-cloudsearch.md";
+            annotate wiki { path = "wiki/amazon-cloudsearch.md"; }
         }
 
         technology amazon_data_firehose
@@ -284,7 +284,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-data-firehose.svg"; }
             available_in  = [aws];
             applicable_to = [streaming_analytics, data_pipeline_orchestrator];
-            wiki          = "amazon-data-firehose.md";
+            annotate wiki { path = "wiki/amazon-data-firehose.md"; }
         }
 
         technology amazon_datazone
@@ -293,7 +293,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-datazone.svg"; }
             available_in  = [aws];
             applicable_to = [data_catalog];
-            wiki          = "amazon-datazone.md";
+            annotate wiki { path = "wiki/amazon-datazone.md"; }
         }
 
         technology amazon_emr
@@ -302,7 +302,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-emr.svg"; }
             available_in  = [aws];
             applicable_to = [lakehouse_platform];
-            wiki          = "amazon-emr.md";
+            annotate wiki { path = "wiki/amazon-emr.md"; }
         }
 
         technology amazon_finspace
@@ -311,7 +311,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-finspace.svg"; }
             available_in  = [aws];
             applicable_to = [analytical_store];
-            wiki          = "amazon-finspace.md";
+            annotate wiki { path = "wiki/amazon-finspace.md"; }
         }
 
         technology amazon_kinesis
@@ -320,7 +320,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-kinesis.svg"; }
             available_in  = [aws];
             applicable_to = [streaming_analytics];
-            wiki          = "amazon-kinesis.md";
+            annotate wiki { path = "wiki/amazon-kinesis.md"; }
         }
 
         technology amazon_kinesis_data_streams
@@ -329,7 +329,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-kinesis-data-streams.svg"; }
             available_in  = [aws];
             applicable_to = [event_log];
-            wiki          = "amazon-kinesis-data-streams.md";
+            annotate wiki { path = "wiki/amazon-kinesis-data-streams.md"; }
         }
 
         technology amazon_kinesis_video_streams
@@ -338,7 +338,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-kinesis-video-streams.svg"; }
             available_in  = [aws];
             applicable_to = [live_streaming_service];
-            wiki          = "amazon-kinesis-video-streams.md";
+            annotate wiki { path = "wiki/amazon-kinesis-video-streams.md"; }
         }
 
         technology amazon_managed_flink
@@ -347,7 +347,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-managed-flink.svg"; }
             available_in  = [aws];
             applicable_to = [streaming_analytics];
-            wiki          = "amazon-managed-flink.md";
+            annotate wiki { path = "wiki/amazon-managed-flink.md"; }
         }
 
         technology amazon_msk
@@ -356,7 +356,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-msk.svg"; }
             available_in  = [aws];
             applicable_to = [event_log];
-            wiki          = "amazon-msk.md";
+            annotate wiki { path = "wiki/amazon-msk.md"; }
         }
 
         technology amazon_opensearch_serverless
@@ -365,7 +365,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-opensearch-serverless.svg"; }
             available_in  = [aws];
             applicable_to = [semantic_index];
-            wiki          = "amazon-opensearch-serverless.md";
+            annotate wiki { path = "wiki/amazon-opensearch-serverless.md"; }
         }
 
         technology amazon_opensearch_service
@@ -374,7 +374,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-opensearch-service.svg"; }
             available_in  = [aws];
             applicable_to = [semantic_index];
-            wiki          = "amazon-opensearch-service.md";
+            annotate wiki { path = "wiki/amazon-opensearch-service.md"; }
         }
 
         technology amazon_redshift
@@ -383,7 +383,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-redshift.svg"; }
             available_in  = [aws];
             applicable_to = [analytical_store];
-            wiki          = "amazon-redshift.md";
+            annotate wiki { path = "wiki/amazon-redshift.md"; }
         }
 
         technology amazon_redshift_serverless
@@ -392,7 +392,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-redshift-serverless.svg"; }
             available_in  = [aws];
             applicable_to = [analytical_store];
-            wiki          = "amazon-redshift-serverless.md";
+            annotate wiki { path = "wiki/amazon-redshift-serverless.md"; }
         }
 
         technology aws_clean_rooms
@@ -401,7 +401,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-clean-rooms.svg"; }
             available_in  = [aws];
             applicable_to = [analytical_store];
-            wiki          = "aws-clean-rooms.md";
+            annotate wiki { path = "wiki/aws-clean-rooms.md"; }
         }
 
         technology aws_data_exchange
@@ -410,7 +410,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-data-exchange.svg"; }
             available_in  = [aws];
             applicable_to = [data_catalog];
-            wiki          = "aws-data-exchange.md";
+            annotate wiki { path = "wiki/aws-data-exchange.md"; }
         }
 
         technology aws_data_pipeline
@@ -418,7 +418,7 @@ namespace libraries.aws
             label         = "AWS Data Pipeline";
             available_in  = [aws];
             applicable_to = [data_pipeline_orchestrator];
-            wiki          = "aws-data-pipeline.md";
+            annotate wiki { path = "wiki/aws-data-pipeline.md"; }
         }
 
         technology aws_entity_resolution
@@ -427,7 +427,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-entity-resolution.svg"; }
             available_in  = [aws];
             applicable_to = [data_pipeline_orchestrator];
-            wiki          = "aws-entity-resolution.md";
+            annotate wiki { path = "wiki/aws-entity-resolution.md"; }
         }
 
         technology aws_glue
@@ -436,7 +436,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-glue.svg"; }
             available_in  = [aws];
             applicable_to = [data_pipeline_orchestrator, data_catalog];
-            wiki          = "aws-glue.md";
+            annotate wiki { path = "wiki/aws-glue.md"; }
         }
 
         technology aws_lake_formation
@@ -445,7 +445,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-lake-formation.svg"; }
             available_in  = [aws];
             applicable_to = [lakehouse_platform, data_catalog];
-            wiki          = "aws-lake-formation.md";
+            annotate wiki { path = "wiki/aws-lake-formation.md"; }
         }
 
         technology quicksight
@@ -454,7 +454,7 @@ namespace libraries.aws
             annotate icon { path = "resources/quicksight.svg"; }
             available_in  = [aws];
             applicable_to = [reporting_surface];
-            wiki          = "quicksight.md";
+            annotate wiki { path = "wiki/quicksight.md"; }
         }
 
         // ── Machine Learning and AI ─────────────────────────────────
@@ -464,7 +464,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-augmented-ai.svg"; }
             available_in  = [aws];
             applicable_to = [workflow_engine];
-            wiki          = "amazon-augmented-ai.md";
+            annotate wiki { path = "wiki/amazon-augmented-ai.md"; }
         }
 
         technology amazon_bedrock
@@ -473,7 +473,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-bedrock.svg"; }
             available_in  = [aws];
             applicable_to = [language_model, ai_platform_suite];
-            wiki          = "amazon-bedrock.md";
+            annotate wiki { path = "wiki/amazon-bedrock.md"; }
         }
 
         technology amazon_codeguru
@@ -482,7 +482,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-codeguru.svg"; }
             available_in  = [aws];
             applicable_to = [ai_platform_suite];
-            wiki          = "amazon-codeguru.md";
+            annotate wiki { path = "wiki/amazon-codeguru.md"; }
         }
 
         technology amazon_comprehend
@@ -491,7 +491,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-comprehend.svg"; }
             available_in  = [aws];
             applicable_to = [language_cognitive_service];
-            wiki          = "amazon-comprehend.md";
+            annotate wiki { path = "wiki/amazon-comprehend.md"; }
         }
 
         technology amazon_comprehend_medical
@@ -500,7 +500,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-comprehend-medical.svg"; }
             available_in  = [aws];
             applicable_to = [language_cognitive_service];
-            wiki          = "amazon-comprehend-medical.md";
+            annotate wiki { path = "wiki/amazon-comprehend-medical.md"; }
         }
 
         technology amazon_devops_guru
@@ -509,7 +509,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-devops-guru.svg"; }
             available_in  = [aws];
             applicable_to = [observability_platform];
-            wiki          = "amazon-devops-guru.md";
+            annotate wiki { path = "wiki/amazon-devops-guru.md"; }
         }
 
         technology amazon_forecast
@@ -518,7 +518,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-forecast.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-forecast.md";
+            annotate wiki { path = "wiki/amazon-forecast.md"; }
         }
 
         technology amazon_fraud_detector
@@ -527,7 +527,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-fraud-detector.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-fraud-detector.md";
+            annotate wiki { path = "wiki/amazon-fraud-detector.md"; }
         }
 
         technology amazon_kendra
@@ -536,7 +536,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-kendra.svg"; }
             available_in  = [aws];
             applicable_to = [semantic_index];
-            wiki          = "amazon-kendra.md";
+            annotate wiki { path = "wiki/amazon-kendra.md"; }
         }
 
         technology amazon_lex
@@ -545,7 +545,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-lex.svg"; }
             available_in  = [aws];
             applicable_to = [bot_platform];
-            wiki          = "amazon-lex.md";
+            annotate wiki { path = "wiki/amazon-lex.md"; }
         }
 
         technology amazon_lookout_equipment
@@ -554,7 +554,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-lookout-equipment.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-lookout-equipment.md";
+            annotate wiki { path = "wiki/amazon-lookout-equipment.md"; }
         }
 
         technology amazon_lookout_metrics
@@ -562,7 +562,7 @@ namespace libraries.aws
             label         = "Amazon Lookout for Metrics";
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-lookout-metrics.md";
+            annotate wiki { path = "wiki/amazon-lookout-metrics.md"; }
         }
 
         technology amazon_lookout_vision
@@ -571,7 +571,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-lookout-vision.svg"; }
             available_in  = [aws];
             applicable_to = [vision_cognitive_service];
-            wiki          = "amazon-lookout-vision.md";
+            annotate wiki { path = "wiki/amazon-lookout-vision.md"; }
         }
 
         technology amazon_monitron
@@ -580,7 +580,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-monitron.svg"; }
             available_in  = [aws];
             applicable_to = [iot_saas_platform];
-            wiki          = "amazon-monitron.md";
+            annotate wiki { path = "wiki/amazon-monitron.md"; }
         }
 
         technology amazon_panorama
@@ -589,7 +589,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-panorama.svg"; }
             available_in  = [aws];
             applicable_to = [vision_cognitive_service];
-            wiki          = "amazon-panorama.md";
+            annotate wiki { path = "wiki/amazon-panorama.md"; }
         }
 
         technology amazon_partyrock
@@ -597,7 +597,7 @@ namespace libraries.aws
             label         = "Amazon PartyRock";
             available_in  = [aws];
             applicable_to = [ai_applications_builder];
-            wiki          = "amazon-partyrock.md";
+            annotate wiki { path = "wiki/amazon-partyrock.md"; }
         }
 
         technology amazon_personalize
@@ -606,7 +606,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-personalize.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-personalize.md";
+            annotate wiki { path = "wiki/amazon-personalize.md"; }
         }
 
         technology amazon_polly
@@ -615,7 +615,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-polly.svg"; }
             available_in  = [aws];
             applicable_to = [speech_cognitive_service];
-            wiki          = "amazon-polly.md";
+            annotate wiki { path = "wiki/amazon-polly.md"; }
         }
 
         technology amazon_q
@@ -624,7 +624,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-q.svg"; }
             available_in  = [aws];
             applicable_to = [ai_platform_suite];
-            wiki          = "amazon-q.md";
+            annotate wiki { path = "wiki/amazon-q.md"; }
         }
 
         technology amazon_q_business
@@ -633,7 +633,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-q-business.svg"; }
             available_in  = [aws];
             applicable_to = [ai_agent, conversational_interface];
-            wiki          = "amazon-q-business.md";
+            annotate wiki { path = "wiki/amazon-q-business.md"; }
         }
 
         technology amazon_q_developer
@@ -642,7 +642,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-q-developer.svg"; }
             available_in  = [aws];
             applicable_to = [ai_agent];
-            wiki          = "amazon-q-developer.md";
+            annotate wiki { path = "wiki/amazon-q-developer.md"; }
         }
 
         technology amazon_q_chat
@@ -651,7 +651,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-q-chat.svg"; }
             available_in  = [aws];
             applicable_to = [ai_agent];
-            wiki          = "amazon-q-chat.md";
+            annotate wiki { path = "wiki/amazon-q-chat.md"; }
         }
 
         technology amazon_rekognition
@@ -660,7 +660,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-rekognition.svg"; }
             available_in  = [aws];
             applicable_to = [vision_cognitive_service];
-            wiki          = "amazon-rekognition.md";
+            annotate wiki { path = "wiki/amazon-rekognition.md"; }
         }
 
         technology amazon_sagemaker
@@ -669,7 +669,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-sagemaker.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-sagemaker.md";
+            annotate wiki { path = "wiki/amazon-sagemaker.md"; }
         }
 
         technology amazon_sagemaker_autopilot
@@ -678,7 +678,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-sagemaker-autopilot.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-sagemaker-autopilot.md";
+            annotate wiki { path = "wiki/amazon-sagemaker-autopilot.md"; }
         }
 
         technology amazon_sagemaker_canvas
@@ -687,7 +687,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-sagemaker-canvas.svg"; }
             available_in  = [aws];
             applicable_to = [ai_applications_builder];
-            wiki          = "amazon-sagemaker-canvas.md";
+            annotate wiki { path = "wiki/amazon-sagemaker-canvas.md"; }
         }
 
         technology amazon_sagemaker_clarify
@@ -696,7 +696,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-sagemaker-clarify.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-sagemaker-clarify.md";
+            annotate wiki { path = "wiki/amazon-sagemaker-clarify.md"; }
         }
 
         technology amazon_sagemaker_data_labeling
@@ -705,7 +705,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-sagemaker-data-labeling.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-sagemaker-data-labeling.md";
+            annotate wiki { path = "wiki/amazon-sagemaker-data-labeling.md"; }
         }
 
         technology amazon_sagemaker_data_wrangler
@@ -714,7 +714,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-sagemaker-data-wrangler.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-sagemaker-data-wrangler.md";
+            annotate wiki { path = "wiki/amazon-sagemaker-data-wrangler.md"; }
         }
 
         technology amazon_sagemaker_edge
@@ -723,7 +723,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-sagemaker-edge.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-sagemaker-edge.md";
+            annotate wiki { path = "wiki/amazon-sagemaker-edge.md"; }
         }
 
         technology amazon_sagemaker_feature_store
@@ -732,7 +732,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-sagemaker-feature-store.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-sagemaker-feature-store.md";
+            annotate wiki { path = "wiki/amazon-sagemaker-feature-store.md"; }
         }
 
         technology amazon_sagemaker_geospatial
@@ -741,7 +741,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-sagemaker-geospatial.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-sagemaker-geospatial.md";
+            annotate wiki { path = "wiki/amazon-sagemaker-geospatial.md"; }
         }
 
         technology amazon_sagemaker_hyperpod
@@ -750,7 +750,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-sagemaker-hyperpod.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-sagemaker-hyperpod.md";
+            annotate wiki { path = "wiki/amazon-sagemaker-hyperpod.md"; }
         }
 
         technology amazon_sagemaker_jumpstart
@@ -759,7 +759,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-sagemaker-jumpstart.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-sagemaker-jumpstart.md";
+            annotate wiki { path = "wiki/amazon-sagemaker-jumpstart.md"; }
         }
 
         technology amazon_sagemaker_pipelines
@@ -768,7 +768,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-sagemaker-pipelines.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-sagemaker-pipelines.md";
+            annotate wiki { path = "wiki/amazon-sagemaker-pipelines.md"; }
         }
 
         technology amazon_sagemaker_studio_lab
@@ -777,7 +777,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-sagemaker-studio-lab.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "amazon-sagemaker-studio-lab.md";
+            annotate wiki { path = "wiki/amazon-sagemaker-studio-lab.md"; }
         }
 
         technology amazon_textract
@@ -786,7 +786,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-textract.svg"; }
             available_in  = [aws];
             applicable_to = [document_intelligence_service];
-            wiki          = "amazon-textract.md";
+            annotate wiki { path = "wiki/amazon-textract.md"; }
         }
 
         technology amazon_transcribe
@@ -795,7 +795,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-transcribe.svg"; }
             available_in  = [aws];
             applicable_to = [speech_cognitive_service];
-            wiki          = "amazon-transcribe.md";
+            annotate wiki { path = "wiki/amazon-transcribe.md"; }
         }
 
         technology amazon_translate
@@ -804,7 +804,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-translate.svg"; }
             available_in  = [aws];
             applicable_to = [translation_cognitive_service];
-            wiki          = "amazon-translate.md";
+            annotate wiki { path = "wiki/amazon-translate.md"; }
         }
 
         technology apache_mxnet
@@ -813,7 +813,7 @@ namespace libraries.aws
             annotate icon { path = "resources/apache-mxnet.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "apache-mxnet.md";
+            annotate wiki { path = "wiki/apache-mxnet.md"; }
         }
 
         technology aws_deepcomposer
@@ -821,7 +821,7 @@ namespace libraries.aws
             label         = "AWS DeepComposer";
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "aws-deepcomposer.md";
+            annotate wiki { path = "wiki/aws-deepcomposer.md"; }
         }
 
         technology aws_deep_learning_amis
@@ -830,7 +830,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-deep-learning-amis.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "aws-deep-learning-amis.md";
+            annotate wiki { path = "wiki/aws-deep-learning-amis.md"; }
         }
 
         technology aws_deep_learning_containers
@@ -839,7 +839,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-deep-learning-containers.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "aws-deep-learning-containers.md";
+            annotate wiki { path = "wiki/aws-deep-learning-containers.md"; }
         }
 
         technology aws_deepracer
@@ -848,7 +848,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-deepracer.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "aws-deepracer.md";
+            annotate wiki { path = "wiki/aws-deepracer.md"; }
         }
 
         technology aws_healthlake
@@ -857,7 +857,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-healthlake.svg"; }
             available_in  = [aws];
             applicable_to = [analytical_store, language_cognitive_service];
-            wiki          = "aws-healthlake.md";
+            annotate wiki { path = "wiki/aws-healthlake.md"; }
         }
 
         technology aws_healthscribe
@@ -866,7 +866,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-healthscribe.svg"; }
             available_in  = [aws];
             applicable_to = [speech_cognitive_service];
-            wiki          = "aws-healthscribe.md";
+            annotate wiki { path = "wiki/aws-healthscribe.md"; }
         }
 
         technology aws_panorama_svc
@@ -875,7 +875,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-panorama-svc.svg"; }
             available_in  = [aws];
             applicable_to = [vision_cognitive_service];
-            wiki          = "aws-panorama-svc.md";
+            annotate wiki { path = "wiki/aws-panorama-svc.md"; }
         }
 
         technology hugging_face_on_aws
@@ -883,7 +883,7 @@ namespace libraries.aws
             label         = "Hugging Face on AWS";
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform, language_model];
-            wiki          = "hugging-face-on-aws.md";
+            annotate wiki { path = "wiki/hugging-face-on-aws.md"; }
         }
 
         technology pytorch_on_aws
@@ -892,7 +892,7 @@ namespace libraries.aws
             annotate icon { path = "resources/pytorch-on-aws.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "pytorch-on-aws.md";
+            annotate wiki { path = "wiki/pytorch-on-aws.md"; }
         }
 
         technology tensorflow_on_aws
@@ -901,7 +901,7 @@ namespace libraries.aws
             annotate icon { path = "resources/tensorflow-on-aws.svg"; }
             available_in  = [aws];
             applicable_to = [ml_lifecycle_platform];
-            wiki          = "tensorflow-on-aws.md";
+            annotate wiki { path = "wiki/tensorflow-on-aws.md"; }
         }
 
         // ── Databases ───────────────────────────────────────────────
@@ -911,7 +911,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-aurora.svg"; }
             available_in  = [aws];
             applicable_to = [relational_store];
-            wiki          = "amazon-aurora.md";
+            annotate wiki { path = "wiki/amazon-aurora.md"; }
         }
 
         technology amazon_documentdb
@@ -920,7 +920,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-documentdb.svg"; }
             available_in  = [aws];
             applicable_to = [document_store];
-            wiki          = "amazon-documentdb.md";
+            annotate wiki { path = "wiki/amazon-documentdb.md"; }
         }
 
         technology amazon_dynamodb
@@ -929,7 +929,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-dynamodb.svg"; }
             available_in  = [aws];
             applicable_to = [document_store];
-            wiki          = "amazon-dynamodb.md";
+            annotate wiki { path = "wiki/amazon-dynamodb.md"; }
         }
 
         technology amazon_elasticache
@@ -938,7 +938,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-elasticache.svg"; }
             available_in  = [aws];
             applicable_to = [cache];
-            wiki          = "amazon-elasticache.md";
+            annotate wiki { path = "wiki/amazon-elasticache.md"; }
         }
 
         technology amazon_keyspaces
@@ -947,7 +947,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-keyspaces.svg"; }
             available_in  = [aws];
             applicable_to = [document_store];
-            wiki          = "amazon-keyspaces.md";
+            annotate wiki { path = "wiki/amazon-keyspaces.md"; }
         }
 
         technology amazon_lightsail_databases
@@ -956,7 +956,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-lightsail-databases.svg"; }
             available_in  = [aws];
             applicable_to = [relational_store];
-            wiki          = "amazon-lightsail-databases.md";
+            annotate wiki { path = "wiki/amazon-lightsail-databases.md"; }
         }
 
         technology amazon_memorydb
@@ -965,7 +965,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-memorydb.svg"; }
             available_in  = [aws];
             applicable_to = [cache, document_store];
-            wiki          = "amazon-memorydb.md";
+            annotate wiki { path = "wiki/amazon-memorydb.md"; }
         }
 
         technology amazon_neptune
@@ -974,7 +974,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-neptune.svg"; }
             available_in  = [aws];
             applicable_to = [knowledge_graph];
-            wiki          = "amazon-neptune.md";
+            annotate wiki { path = "wiki/amazon-neptune.md"; }
         }
 
         technology amazon_rds
@@ -983,7 +983,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-rds.svg"; }
             available_in  = [aws];
             applicable_to = [relational_store];
-            wiki          = "amazon-rds.md";
+            annotate wiki { path = "wiki/amazon-rds.md"; }
         }
 
         technology amazon_rds_db2
@@ -992,7 +992,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-rds-db2.svg"; }
             available_in  = [aws];
             applicable_to = [relational_store];
-            wiki          = "amazon-rds-db2.md";
+            annotate wiki { path = "wiki/amazon-rds-db2.md"; }
         }
 
         technology amazon_rds_vmware
@@ -1001,7 +1001,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-rds-vmware.svg"; }
             available_in  = [aws, aws_outposts];
             applicable_to = [relational_store];
-            wiki          = "amazon-rds-vmware.md";
+            annotate wiki { path = "wiki/amazon-rds-vmware.md"; }
         }
 
         technology amazon_timestream
@@ -1010,7 +1010,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-timestream.svg"; }
             available_in  = [aws];
             applicable_to = [analytical_store];
-            wiki          = "amazon-timestream.md";
+            annotate wiki { path = "wiki/amazon-timestream.md"; }
         }
 
         // ── Compute ─────────────────────────────────────────────────
@@ -1020,7 +1020,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-ec2.svg"; }
             available_in  = [aws];
             applicable_to = [hosting_fabric];
-            wiki          = "amazon-ec2.md";
+            annotate wiki { path = "wiki/amazon-ec2.md"; }
         }
 
         technology amazon_ec2_autoscaling
@@ -1029,7 +1029,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-ec2-autoscaling.svg"; }
             available_in  = [aws];
             applicable_to = [hosting_fabric];
-            wiki          = "amazon-ec2-autoscaling.md";
+            annotate wiki { path = "wiki/amazon-ec2-autoscaling.md"; }
         }
 
         technology amazon_ec2_image_builder
@@ -1038,7 +1038,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-ec2-image-builder.svg"; }
             available_in  = [aws];
             applicable_to = [iac_template_engine];
-            wiki          = "amazon-ec2-image-builder.md";
+            annotate wiki { path = "wiki/amazon-ec2-image-builder.md"; }
         }
 
         technology amazon_lightsail
@@ -1047,7 +1047,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-lightsail.svg"; }
             available_in  = [aws];
             applicable_to = [hosting_fabric];
-            wiki          = "amazon-lightsail.md";
+            annotate wiki { path = "wiki/amazon-lightsail.md"; }
         }
 
         technology amazon_linux_2023
@@ -1056,7 +1056,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-linux-2023.svg"; }
             available_in  = [aws, aws_govcloud, aws_china];
             applicable_to = [hosting_fabric];
-            wiki          = "amazon-linux-2023.md";
+            annotate wiki { path = "wiki/amazon-linux-2023.md"; }
         }
 
         technology aws_app_runner
@@ -1065,7 +1065,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-app-runner.svg"; }
             available_in  = [aws];
             applicable_to = [hosting_fabric];
-            wiki          = "aws-app-runner.md";
+            annotate wiki { path = "wiki/aws-app-runner.md"; }
         }
 
         technology aws_batch
@@ -1074,7 +1074,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-batch.svg"; }
             available_in  = [aws];
             applicable_to = [batch_compute];
-            wiki          = "aws-batch.md";
+            annotate wiki { path = "wiki/aws-batch.md"; }
         }
 
         technology aws_elastic_beanstalk
@@ -1083,7 +1083,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-elastic-beanstalk.svg"; }
             available_in  = [aws];
             applicable_to = [hosting_fabric];
-            wiki          = "aws-elastic-beanstalk.md";
+            annotate wiki { path = "wiki/aws-elastic-beanstalk.md"; }
         }
 
         technology aws_fargate
@@ -1092,7 +1092,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-fargate.svg"; }
             available_in  = [aws];
             applicable_to = [hosting_fabric];
-            wiki          = "aws-fargate.md";
+            annotate wiki { path = "wiki/aws-fargate.md"; }
         }
 
         technology aws_lambda
@@ -1101,7 +1101,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-lambda.svg"; }
             available_in  = [aws];
             applicable_to = [hosting_fabric];
-            wiki          = "aws-lambda.md";
+            annotate wiki { path = "wiki/aws-lambda.md"; }
         }
 
         technology aws_outposts_svc
@@ -1110,7 +1110,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-outposts-svc.svg"; }
             available_in  = [aws, aws_outposts];
             applicable_to = [private_cloud_appliance];
-            wiki          = "aws-outposts-svc.md";
+            annotate wiki { path = "wiki/aws-outposts-svc.md"; }
         }
 
         technology aws_serverless_application_repository
@@ -1119,7 +1119,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-serverless-application-repository.svg"; }
             available_in  = [aws];
             applicable_to = [artifact_registry];
-            wiki          = "aws-serverless-application-repository.md";
+            annotate wiki { path = "wiki/aws-serverless-application-repository.md"; }
         }
 
         technology aws_wavelength
@@ -1128,7 +1128,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-wavelength.svg"; }
             available_in  = [aws, aws_wavelength_zones];
             applicable_to = [carrier_edge_platform];
-            wiki          = "aws-wavelength.md";
+            annotate wiki { path = "wiki/aws-wavelength.md"; }
         }
 
         technology vmware_cloud_on_aws
@@ -1137,7 +1137,7 @@ namespace libraries.aws
             annotate icon { path = "resources/vmware-cloud-on-aws.svg"; }
             available_in  = [aws, aws_govcloud];
             applicable_to = [hosting_fabric];
-            wiki          = "vmware-cloud-on-aws.md";
+            annotate wiki { path = "wiki/vmware-cloud-on-aws.md"; }
         }
 
         // ── Storage ─────────────────────────────────────────────────
@@ -1147,7 +1147,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-ebs.svg"; }
             available_in  = [aws];
             applicable_to = [file_store];
-            wiki          = "amazon-ebs.md";
+            annotate wiki { path = "wiki/amazon-ebs.md"; }
         }
 
         technology amazon_efs
@@ -1156,7 +1156,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-efs.svg"; }
             available_in  = [aws];
             applicable_to = [file_store];
-            wiki          = "amazon-efs.md";
+            annotate wiki { path = "wiki/amazon-efs.md"; }
         }
 
         technology amazon_file_cache
@@ -1165,7 +1165,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-file-cache.svg"; }
             available_in  = [aws];
             applicable_to = [cache, file_store];
-            wiki          = "amazon-file-cache.md";
+            annotate wiki { path = "wiki/amazon-file-cache.md"; }
         }
 
         technology amazon_fsx_lustre
@@ -1174,7 +1174,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-fsx-lustre.svg"; }
             available_in  = [aws];
             applicable_to = [file_store];
-            wiki          = "amazon-fsx-lustre.md";
+            annotate wiki { path = "wiki/amazon-fsx-lustre.md"; }
         }
 
         technology amazon_fsx_netapp
@@ -1183,7 +1183,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-fsx-netapp.svg"; }
             available_in  = [aws];
             applicable_to = [file_store];
-            wiki          = "amazon-fsx-netapp.md";
+            annotate wiki { path = "wiki/amazon-fsx-netapp.md"; }
         }
 
         technology amazon_fsx_openzfs
@@ -1192,7 +1192,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-fsx-openzfs.svg"; }
             available_in  = [aws];
             applicable_to = [file_store];
-            wiki          = "amazon-fsx-openzfs.md";
+            annotate wiki { path = "wiki/amazon-fsx-openzfs.md"; }
         }
 
         technology amazon_fsx_windows
@@ -1201,7 +1201,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-fsx-windows.svg"; }
             available_in  = [aws];
             applicable_to = [file_store];
-            wiki          = "amazon-fsx-windows.md";
+            annotate wiki { path = "wiki/amazon-fsx-windows.md"; }
         }
 
         technology amazon_s3
@@ -1210,7 +1210,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-s3.svg"; }
             available_in  = [aws];
             applicable_to = [file_store, archive_store];
-            wiki          = "amazon-s3.md";
+            annotate wiki { path = "wiki/amazon-s3.md"; }
         }
 
         technology aws_backup
@@ -1219,7 +1219,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-backup.svg"; }
             available_in  = [aws];
             applicable_to = [backup_service];
-            wiki          = "aws-backup.md";
+            annotate wiki { path = "wiki/aws-backup.md"; }
         }
 
         technology aws_elastic_disaster_recovery
@@ -1228,7 +1228,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-elastic-disaster-recovery.svg"; }
             available_in  = [aws];
             applicable_to = [disaster_recovery_service];
-            wiki          = "aws-elastic-disaster-recovery.md";
+            annotate wiki { path = "wiki/aws-elastic-disaster-recovery.md"; }
         }
 
         technology aws_storage_gateway
@@ -1237,7 +1237,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-storage-gateway.svg"; }
             available_in  = [aws];
             applicable_to = [hybrid_resource_manager];
-            wiki          = "aws-storage-gateway.md";
+            annotate wiki { path = "wiki/aws-storage-gateway.md"; }
         }
 
         // ── Containers ──────────────────────────────────────────────
@@ -1247,7 +1247,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-ecr.svg"; }
             available_in  = [aws];
             applicable_to = [container_registry];
-            wiki          = "amazon-ecr.md";
+            annotate wiki { path = "wiki/amazon-ecr.md"; }
         }
 
         technology amazon_ecs
@@ -1256,7 +1256,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-ecs.svg"; }
             available_in  = [aws];
             applicable_to = [hosting_fabric];
-            wiki          = "amazon-ecs.md";
+            annotate wiki { path = "wiki/amazon-ecs.md"; }
         }
 
         technology amazon_eks
@@ -1265,7 +1265,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-eks.svg"; }
             available_in  = [aws];
             applicable_to = [hosting_fabric];
-            wiki          = "amazon-eks.md";
+            annotate wiki { path = "wiki/amazon-eks.md"; }
         }
 
         technology aws_app2container
@@ -1273,7 +1273,7 @@ namespace libraries.aws
             label         = "AWS App2Container";
             available_in  = [aws];
             applicable_to = [migration_assessment_service];
-            wiki          = "aws-app2container.md";
+            annotate wiki { path = "wiki/aws-app2container.md"; }
         }
 
         technology rosa
@@ -1282,7 +1282,7 @@ namespace libraries.aws
             annotate icon { path = "resources/rosa.svg"; }
             available_in  = [aws];
             applicable_to = [hosting_fabric];
-            wiki          = "rosa.md";
+            annotate wiki { path = "wiki/rosa.md"; }
         }
 
         // ── Security, identity, and compliance ──────────────────────
@@ -1292,7 +1292,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-cognito.svg"; }
             available_in  = [aws];
             applicable_to = [federated_identity_provider];
-            wiki          = "amazon-cognito.md";
+            annotate wiki { path = "wiki/amazon-cognito.md"; }
         }
 
         technology amazon_detective
@@ -1301,7 +1301,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-detective.svg"; }
             available_in  = [aws];
             applicable_to = [siem];
-            wiki          = "amazon-detective.md";
+            annotate wiki { path = "wiki/amazon-detective.md"; }
         }
 
         technology amazon_guardduty
@@ -1310,7 +1310,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-guardduty.svg"; }
             available_in  = [aws];
             applicable_to = [siem];
-            wiki          = "amazon-guardduty.md";
+            annotate wiki { path = "wiki/amazon-guardduty.md"; }
         }
 
         technology amazon_inspector
@@ -1319,7 +1319,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-inspector.svg"; }
             available_in  = [aws];
             applicable_to = [cloud_security_posture_mgmt];
-            wiki          = "amazon-inspector.md";
+            annotate wiki { path = "wiki/amazon-inspector.md"; }
         }
 
         technology amazon_macie
@@ -1328,7 +1328,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-macie.svg"; }
             available_in  = [aws];
             applicable_to = [data_protection_service];
-            wiki          = "amazon-macie.md";
+            annotate wiki { path = "wiki/amazon-macie.md"; }
         }
 
         technology amazon_security_lake
@@ -1337,7 +1337,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-security-lake.svg"; }
             available_in  = [aws];
             applicable_to = [siem];
-            wiki          = "amazon-security-lake.md";
+            annotate wiki { path = "wiki/amazon-security-lake.md"; }
         }
 
         technology amazon_verified_permissions
@@ -1346,7 +1346,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-verified-permissions.svg"; }
             available_in  = [aws];
             applicable_to = [authorization_service];
-            wiki          = "amazon-verified-permissions.md";
+            annotate wiki { path = "wiki/amazon-verified-permissions.md"; }
         }
 
         technology aws_artifact
@@ -1355,7 +1355,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-artifact.svg"; }
             available_in  = [aws];
             applicable_to = [policy_engine];
-            wiki          = "aws-artifact.md";
+            annotate wiki { path = "wiki/aws-artifact.md"; }
         }
 
         technology aws_audit_manager
@@ -1364,7 +1364,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-audit-manager.svg"; }
             available_in  = [aws];
             applicable_to = [policy_engine];
-            wiki          = "aws-audit-manager.md";
+            annotate wiki { path = "wiki/aws-audit-manager.md"; }
         }
 
         technology aws_certificate_manager
@@ -1373,7 +1373,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-certificate-manager.svg"; }
             available_in  = [aws];
             applicable_to = [secret_store];
-            wiki          = "aws-certificate-manager.md";
+            annotate wiki { path = "wiki/aws-certificate-manager.md"; }
         }
 
         technology aws_cloudhsm
@@ -1382,7 +1382,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-cloudhsm.svg"; }
             available_in  = [aws];
             applicable_to = [hardware_security_module];
-            wiki          = "aws-cloudhsm.md";
+            annotate wiki { path = "wiki/aws-cloudhsm.md"; }
         }
 
         technology aws_directory_service
@@ -1391,7 +1391,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-directory-service.svg"; }
             available_in  = [aws];
             applicable_to = [domain_services];
-            wiki          = "aws-directory-service.md";
+            annotate wiki { path = "wiki/aws-directory-service.md"; }
         }
 
         technology aws_firewall_manager
@@ -1400,7 +1400,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-firewall-manager.svg"; }
             available_in  = [aws];
             applicable_to = [network_firewall];
-            wiki          = "aws-firewall-manager.md";
+            annotate wiki { path = "wiki/aws-firewall-manager.md"; }
         }
 
         technology aws_iam_identity_center
@@ -1409,7 +1409,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-iam-identity-center.svg"; }
             available_in  = [aws];
             applicable_to = [federated_identity_provider];
-            wiki          = "aws-iam-identity-center.md";
+            annotate wiki { path = "wiki/aws-iam-identity-center.md"; }
         }
 
         technology aws_iam
@@ -1418,7 +1418,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-iam.svg"; }
             available_in  = [aws];
             applicable_to = [authorization_service];
-            wiki          = "aws-iam.md";
+            annotate wiki { path = "wiki/aws-iam.md"; }
         }
 
         technology aws_kms
@@ -1427,7 +1427,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-kms.svg"; }
             available_in  = [aws];
             applicable_to = [secret_store];
-            wiki          = "aws-kms.md";
+            annotate wiki { path = "wiki/aws-kms.md"; }
         }
 
         technology aws_network_firewall
@@ -1436,7 +1436,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-network-firewall.svg"; }
             available_in  = [aws];
             applicable_to = [network_firewall];
-            wiki          = "aws-network-firewall.md";
+            annotate wiki { path = "wiki/aws-network-firewall.md"; }
         }
 
         technology aws_resource_access_manager
@@ -1445,7 +1445,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-resource-access-manager.svg"; }
             available_in  = [aws];
             applicable_to = [multi_tenant_management];
-            wiki          = "aws-resource-access-manager.md";
+            annotate wiki { path = "wiki/aws-resource-access-manager.md"; }
         }
 
         technology aws_secrets_manager
@@ -1454,7 +1454,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-secrets-manager.svg"; }
             available_in  = [aws];
             applicable_to = [secret_store];
-            wiki          = "aws-secrets-manager.md";
+            annotate wiki { path = "wiki/aws-secrets-manager.md"; }
         }
 
         technology aws_security_hub
@@ -1463,7 +1463,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-security-hub.svg"; }
             available_in  = [aws];
             applicable_to = [cloud_security_posture_mgmt];
-            wiki          = "aws-security-hub.md";
+            annotate wiki { path = "wiki/aws-security-hub.md"; }
         }
 
         technology aws_shield
@@ -1472,7 +1472,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-shield.svg"; }
             available_in  = [aws];
             applicable_to = [ddos_protection];
-            wiki          = "aws-shield.md";
+            annotate wiki { path = "wiki/aws-shield.md"; }
         }
 
         technology aws_waf
@@ -1481,7 +1481,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-waf.svg"; }
             available_in  = [aws];
             applicable_to = [web_application_firewall];
-            wiki          = "aws-waf.md";
+            annotate wiki { path = "wiki/aws-waf.md"; }
         }
 
         technology aws_waf_captcha
@@ -1490,7 +1490,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-waf-captcha.svg"; }
             available_in  = [aws];
             applicable_to = [web_application_firewall];
-            wiki          = "aws-waf-captcha.md";
+            annotate wiki { path = "wiki/aws-waf-captcha.md"; }
         }
 
         // ── Management and governance ───────────────────────────────
@@ -1500,7 +1500,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-cloudwatch.svg"; }
             available_in  = [aws];
             applicable_to = [observability_platform];
-            wiki          = "amazon-cloudwatch.md";
+            annotate wiki { path = "wiki/amazon-cloudwatch.md"; }
         }
 
         technology amazon_managed_grafana
@@ -1509,7 +1509,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-managed-grafana.svg"; }
             available_in  = [aws];
             applicable_to = [observability_dashboard];
-            wiki          = "amazon-managed-grafana.md";
+            annotate wiki { path = "wiki/amazon-managed-grafana.md"; }
         }
 
         technology amazon_managed_prometheus
@@ -1518,7 +1518,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-managed-prometheus.svg"; }
             available_in  = [aws];
             applicable_to = [observability_platform];
-            wiki          = "amazon-managed-prometheus.md";
+            annotate wiki { path = "wiki/amazon-managed-prometheus.md"; }
         }
 
         technology aws_auto_scaling
@@ -1527,7 +1527,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-auto-scaling.svg"; }
             available_in  = [aws];
             applicable_to = [cloud_control_plane];
-            wiki          = "aws-auto-scaling.md";
+            annotate wiki { path = "wiki/aws-auto-scaling.md"; }
         }
 
         technology aws_cloudformation
@@ -1536,7 +1536,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-cloudformation.svg"; }
             available_in  = [aws];
             applicable_to = [iac_template_engine];
-            wiki          = "aws-cloudformation.md";
+            annotate wiki { path = "wiki/aws-cloudformation.md"; }
         }
 
         technology aws_cloudtrail
@@ -1545,7 +1545,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-cloudtrail.svg"; }
             available_in  = [aws];
             applicable_to = [observability_platform];
-            wiki          = "aws-cloudtrail.md";
+            annotate wiki { path = "wiki/aws-cloudtrail.md"; }
         }
 
         technology aws_compute_optimizer
@@ -1554,7 +1554,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-compute-optimizer.svg"; }
             available_in  = [aws];
             applicable_to = [cloud_advisory_service];
-            wiki          = "aws-compute-optimizer.md";
+            annotate wiki { path = "wiki/aws-compute-optimizer.md"; }
         }
 
         technology aws_config
@@ -1563,7 +1563,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-config.svg"; }
             available_in  = [aws];
             applicable_to = [policy_engine];
-            wiki          = "aws-config.md";
+            annotate wiki { path = "wiki/aws-config.md"; }
         }
 
         technology aws_console_mobile
@@ -1572,7 +1572,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-console-mobile.svg"; }
             available_in  = [aws];
             applicable_to = [mobile_app];
-            wiki          = "aws-console-mobile.md";
+            annotate wiki { path = "wiki/aws-console-mobile.md"; }
         }
 
         technology aws_control_tower
@@ -1581,7 +1581,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-control-tower.svg"; }
             available_in  = [aws];
             applicable_to = [multi_tenant_management];
-            wiki          = "aws-control-tower.md";
+            annotate wiki { path = "wiki/aws-control-tower.md"; }
         }
 
         technology aws_health
@@ -1590,7 +1590,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-health.svg"; }
             available_in  = [aws];
             applicable_to = [cloud_health_feed];
-            wiki          = "aws-health.md";
+            annotate wiki { path = "wiki/aws-health.md"; }
         }
 
         technology aws_launch_wizard
@@ -1599,7 +1599,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-launch-wizard.svg"; }
             available_in  = [aws];
             applicable_to = [iac_template_engine];
-            wiki          = "aws-launch-wizard.md";
+            annotate wiki { path = "wiki/aws-launch-wizard.md"; }
         }
 
         technology aws_license_manager
@@ -1608,7 +1608,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-license-manager.svg"; }
             available_in  = [aws];
             applicable_to = [policy_engine];
-            wiki          = "aws-license-manager.md";
+            annotate wiki { path = "wiki/aws-license-manager.md"; }
         }
 
         technology aws_organizations
@@ -1617,7 +1617,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-organizations.svg"; }
             available_in  = [aws];
             applicable_to = [multi_tenant_management];
-            wiki          = "aws-organizations.md";
+            annotate wiki { path = "wiki/aws-organizations.md"; }
         }
 
         technology aws_proton
@@ -1626,7 +1626,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-proton.svg"; }
             available_in  = [aws];
             applicable_to = [ci_cd_pipeline];
-            wiki          = "aws-proton.md";
+            annotate wiki { path = "wiki/aws-proton.md"; }
         }
 
         technology aws_service_catalog
@@ -1635,7 +1635,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-service-catalog.svg"; }
             available_in  = [aws];
             applicable_to = [enterprise_api_catalogue];
-            wiki          = "aws-service-catalog.md";
+            annotate wiki { path = "wiki/aws-service-catalog.md"; }
         }
 
         technology aws_systems_manager
@@ -1644,7 +1644,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-systems-manager.svg"; }
             available_in  = [aws];
             applicable_to = [hybrid_resource_manager];
-            wiki          = "aws-systems-manager.md";
+            annotate wiki { path = "wiki/aws-systems-manager.md"; }
         }
 
         technology aws_trusted_advisor
@@ -1653,7 +1653,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-trusted-advisor.svg"; }
             available_in  = [aws];
             applicable_to = [cloud_advisory_service];
-            wiki          = "aws-trusted-advisor.md";
+            annotate wiki { path = "wiki/aws-trusted-advisor.md"; }
         }
 
         technology aws_user_notifications
@@ -1662,7 +1662,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-user-notifications.svg"; }
             available_in  = [aws];
             applicable_to = [notification_service];
-            wiki          = "aws-user-notifications.md";
+            annotate wiki { path = "wiki/aws-user-notifications.md"; }
         }
 
         technology aws_well_architected_tool
@@ -1671,7 +1671,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-well-architected-tool.svg"; }
             available_in  = [aws];
             applicable_to = [cloud_advisory_service];
-            wiki          = "aws-well-architected-tool.md";
+            annotate wiki { path = "wiki/aws-well-architected-tool.md"; }
         }
 
         technology opsworks
@@ -1679,7 +1679,7 @@ namespace libraries.aws
             label         = "OpsWorks";
             available_in  = [aws];
             applicable_to = [iac_template_engine];
-            wiki          = "opsworks.md";
+            annotate wiki { path = "wiki/opsworks.md"; }
         }
 
         // ── Developer tools ─────────────────────────────────────────
@@ -1689,7 +1689,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-codecatalyst.svg"; }
             available_in  = [aws];
             applicable_to = [ci_cd_pipeline];
-            wiki          = "amazon-codecatalyst.md";
+            annotate wiki { path = "wiki/amazon-codecatalyst.md"; }
         }
 
         technology amazon_corretto
@@ -1698,7 +1698,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-corretto.svg"; }
             available_in  = [aws];
             applicable_to = [hosting_fabric];
-            wiki          = "amazon-corretto.md";
+            annotate wiki { path = "wiki/amazon-corretto.md"; }
         }
 
         technology aws_cloud9
@@ -1707,7 +1707,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-cloud9.svg"; }
             available_in  = [aws];
             applicable_to = [cloud_dev_workstation];
-            wiki          = "aws-cloud9.md";
+            annotate wiki { path = "wiki/aws-cloud9.md"; }
         }
 
         technology aws_cloudshell
@@ -1716,7 +1716,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-cloudshell.svg"; }
             available_in  = [aws];
             applicable_to = [cloud_dev_workstation];
-            wiki          = "aws-cloudshell.md";
+            annotate wiki { path = "wiki/aws-cloudshell.md"; }
         }
 
         technology aws_codeartifact
@@ -1725,7 +1725,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-codeartifact.svg"; }
             available_in  = [aws];
             applicable_to = [artifact_registry];
-            wiki          = "aws-codeartifact.md";
+            annotate wiki { path = "wiki/aws-codeartifact.md"; }
         }
 
         technology aws_codebuild
@@ -1734,7 +1734,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-codebuild.svg"; }
             available_in  = [aws];
             applicable_to = [ci_cd_pipeline];
-            wiki          = "aws-codebuild.md";
+            annotate wiki { path = "wiki/aws-codebuild.md"; }
         }
 
         technology aws_codecommit
@@ -1743,7 +1743,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-codecommit.svg"; }
             available_in  = [aws];
             applicable_to = [source_repository];
-            wiki          = "aws-codecommit.md";
+            annotate wiki { path = "wiki/aws-codecommit.md"; }
         }
 
         technology aws_codedeploy
@@ -1752,7 +1752,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-codedeploy.svg"; }
             available_in  = [aws];
             applicable_to = [ci_cd_pipeline];
-            wiki          = "aws-codedeploy.md";
+            annotate wiki { path = "wiki/aws-codedeploy.md"; }
         }
 
         technology aws_codepipeline
@@ -1761,7 +1761,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-codepipeline.svg"; }
             available_in  = [aws];
             applicable_to = [ci_cd_pipeline];
-            wiki          = "aws-codepipeline.md";
+            annotate wiki { path = "wiki/aws-codepipeline.md"; }
         }
 
         technology aws_fault_injection_service
@@ -1770,7 +1770,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-fault-injection-service.svg"; }
             available_in  = [aws];
             applicable_to = [chaos_engineering];
-            wiki          = "aws-fault-injection-service.md";
+            annotate wiki { path = "wiki/aws-fault-injection-service.md"; }
         }
 
         technology aws_infrastructure_composer
@@ -1779,7 +1779,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-infrastructure-composer.svg"; }
             available_in  = [aws];
             applicable_to = [iac_template_engine];
-            wiki          = "aws-infrastructure-composer.md";
+            annotate wiki { path = "wiki/aws-infrastructure-composer.md"; }
         }
 
         technology aws_xray
@@ -1788,7 +1788,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-xray.svg"; }
             available_in  = [aws];
             applicable_to = [observability_platform];
-            wiki          = "aws-xray.md";
+            annotate wiki { path = "wiki/aws-xray.md"; }
         }
 
         // ── Business applications ───────────────────────────────────
@@ -1798,7 +1798,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-chime.svg"; }
             available_in  = [aws];
             applicable_to = [communication_platform];
-            wiki          = "amazon-chime.md";
+            annotate wiki { path = "wiki/amazon-chime.md"; }
         }
 
         technology amazon_chime_sdk
@@ -1807,7 +1807,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-chime-sdk.svg"; }
             available_in  = [aws];
             applicable_to = [communication_platform];
-            wiki          = "amazon-chime-sdk.md";
+            annotate wiki { path = "wiki/amazon-chime-sdk.md"; }
         }
 
         technology amazon_connect
@@ -1816,7 +1816,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-connect.svg"; }
             available_in  = [aws];
             applicable_to = [communication_platform];
-            wiki          = "amazon-connect.md";
+            annotate wiki { path = "wiki/amazon-connect.md"; }
         }
 
         technology amazon_pinpoint
@@ -1825,7 +1825,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-pinpoint.svg"; }
             available_in  = [aws];
             applicable_to = [notification_service];
-            wiki          = "amazon-pinpoint.md";
+            annotate wiki { path = "wiki/amazon-pinpoint.md"; }
         }
 
         technology amazon_ses
@@ -1834,7 +1834,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-ses.svg"; }
             available_in  = [aws];
             applicable_to = [notification_service];
-            wiki          = "amazon-ses.md";
+            annotate wiki { path = "wiki/amazon-ses.md"; }
         }
 
         technology amazon_workdocs
@@ -1843,7 +1843,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-workdocs.svg"; }
             available_in  = [aws];
             applicable_to = [document_store];
-            wiki          = "amazon-workdocs.md";
+            annotate wiki { path = "wiki/amazon-workdocs.md"; }
         }
 
         technology amazon_workmail
@@ -1852,7 +1852,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-workmail.svg"; }
             available_in  = [aws];
             applicable_to = [email_solution];
-            wiki          = "amazon-workmail.md";
+            annotate wiki { path = "wiki/amazon-workmail.md"; }
         }
 
         technology aws_appfabric
@@ -1861,7 +1861,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-appfabric.svg"; }
             available_in  = [aws];
             applicable_to = [integration_adapter, siem];
-            wiki          = "aws-appfabric.md";
+            annotate wiki { path = "wiki/aws-appfabric.md"; }
         }
 
         // ── Frontend web and mobile services ────────────────────────
@@ -1871,7 +1871,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-location-service.svg"; }
             available_in  = [aws];
             applicable_to = [geospatial_service];
-            wiki          = "amazon-location-service.md";
+            annotate wiki { path = "wiki/amazon-location-service.md"; }
         }
 
         technology aws_amplify
@@ -1880,7 +1880,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-amplify.svg"; }
             available_in  = [aws];
             applicable_to = [static_web_app_hosting];
-            wiki          = "aws-amplify.md";
+            annotate wiki { path = "wiki/aws-amplify.md"; }
         }
 
         technology aws_appsync
@@ -1889,7 +1889,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-appsync.svg"; }
             available_in  = [aws];
             applicable_to = [public_api];
-            wiki          = "aws-appsync.md";
+            annotate wiki { path = "wiki/aws-appsync.md"; }
         }
 
         technology aws_device_farm
@@ -1898,7 +1898,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-device-farm.svg"; }
             available_in  = [aws];
             applicable_to = [app_test_runner];
-            wiki          = "aws-device-farm.md";
+            annotate wiki { path = "wiki/aws-device-farm.md"; }
         }
 
         // ── Media ───────────────────────────────────────────────────
@@ -1907,7 +1907,7 @@ namespace libraries.aws
             label         = "Amazon Elastic Transcoder";
             available_in  = [aws];
             applicable_to = [media_encoding_service];
-            wiki          = "amazon-elastic-transcoder.md";
+            annotate wiki { path = "wiki/amazon-elastic-transcoder.md"; }
         }
 
         technology amazon_ivs
@@ -1916,7 +1916,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-ivs.svg"; }
             available_in  = [aws];
             applicable_to = [live_streaming_service];
-            wiki          = "amazon-ivs.md";
+            annotate wiki { path = "wiki/amazon-ivs.md"; }
         }
 
         technology amazon_nimble_studio
@@ -1924,7 +1924,7 @@ namespace libraries.aws
             label         = "Amazon Nimble Studio";
             available_in  = [aws];
             applicable_to = [media_platform_suite];
-            wiki          = "amazon-nimble-studio.md";
+            annotate wiki { path = "wiki/amazon-nimble-studio.md"; }
         }
 
         technology aws_elemental_appliances
@@ -1933,7 +1933,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-elemental-appliances.svg"; }
             available_in  = [aws_outposts];
             applicable_to = [media_platform_suite];
-            wiki          = "aws-elemental-appliances.md";
+            annotate wiki { path = "wiki/aws-elemental-appliances.md"; }
         }
 
         technology aws_elemental_mediaconnect
@@ -1942,7 +1942,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-elemental-mediaconnect.svg"; }
             available_in  = [aws];
             applicable_to = [live_streaming_service];
-            wiki          = "aws-elemental-mediaconnect.md";
+            annotate wiki { path = "wiki/aws-elemental-mediaconnect.md"; }
         }
 
         technology aws_elemental_mediaconvert
@@ -1951,7 +1951,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-elemental-mediaconvert.svg"; }
             available_in  = [aws];
             applicable_to = [media_encoding_service];
-            wiki          = "aws-elemental-mediaconvert.md";
+            annotate wiki { path = "wiki/aws-elemental-mediaconvert.md"; }
         }
 
         technology aws_elemental_medialive
@@ -1960,7 +1960,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-elemental-medialive.svg"; }
             available_in  = [aws];
             applicable_to = [live_streaming_service];
-            wiki          = "aws-elemental-medialive.md";
+            annotate wiki { path = "wiki/aws-elemental-medialive.md"; }
         }
 
         technology aws_elemental_mediapackage
@@ -1969,7 +1969,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-elemental-mediapackage.svg"; }
             available_in  = [aws];
             applicable_to = [live_streaming_service, media_drm_service];
-            wiki          = "aws-elemental-mediapackage.md";
+            annotate wiki { path = "wiki/aws-elemental-mediapackage.md"; }
         }
 
         technology aws_elemental_mediastore
@@ -1978,7 +1978,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-elemental-mediastore.svg"; }
             available_in  = [aws];
             applicable_to = [file_store];
-            wiki          = "aws-elemental-mediastore.md";
+            annotate wiki { path = "wiki/aws-elemental-mediastore.md"; }
         }
 
         technology aws_elemental_mediatailor
@@ -1987,7 +1987,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-elemental-mediatailor.svg"; }
             available_in  = [aws];
             applicable_to = [live_streaming_service];
-            wiki          = "aws-elemental-mediatailor.md";
+            annotate wiki { path = "wiki/aws-elemental-mediatailor.md"; }
         }
 
         // ── End user computing ──────────────────────────────────────
@@ -1997,7 +1997,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-workspaces.svg"; }
             available_in  = [aws];
             applicable_to = [virtual_desktop_infrastructure];
-            wiki          = "amazon-workspaces.md";
+            annotate wiki { path = "wiki/amazon-workspaces.md"; }
         }
 
         technology amazon_workspaces_applications
@@ -2006,7 +2006,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-workspaces-applications.svg"; }
             available_in  = [aws];
             applicable_to = [virtual_desktop_infrastructure];
-            wiki          = "amazon-workspaces-applications.md";
+            annotate wiki { path = "wiki/amazon-workspaces-applications.md"; }
         }
 
         technology amazon_workspaces_core
@@ -2015,7 +2015,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-workspaces-core.svg"; }
             available_in  = [aws];
             applicable_to = [virtual_desktop_infrastructure];
-            wiki          = "amazon-workspaces-core.md";
+            annotate wiki { path = "wiki/amazon-workspaces-core.md"; }
         }
 
         technology amazon_workspaces_thin_client
@@ -2024,7 +2024,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-workspaces-thin-client.svg"; }
             available_in  = [aws];
             applicable_to = [virtual_desktop_infrastructure];
-            wiki          = "amazon-workspaces-thin-client.md";
+            annotate wiki { path = "wiki/amazon-workspaces-thin-client.md"; }
         }
 
         technology amazon_workspaces_web
@@ -2033,7 +2033,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-workspaces-web.svg"; }
             available_in  = [aws];
             applicable_to = [virtual_desktop_infrastructure];
-            wiki          = "amazon-workspaces-web.md";
+            annotate wiki { path = "wiki/amazon-workspaces-web.md"; }
         }
 
         // ── Internet of Things (IoT) ────────────────────────────────
@@ -2043,7 +2043,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-iot-analytics.svg"; }
             available_in  = [aws];
             applicable_to = [iot_saas_platform, streaming_analytics];
-            wiki          = "aws-iot-analytics.md";
+            annotate wiki { path = "wiki/aws-iot-analytics.md"; }
         }
 
         technology aws_iot_button
@@ -2052,7 +2052,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-iot-button.svg"; }
             available_in  = [aws];
             applicable_to = [iot_saas_platform];
-            wiki          = "aws-iot-button.md";
+            annotate wiki { path = "wiki/aws-iot-button.md"; }
         }
 
         technology aws_iot_core
@@ -2061,7 +2061,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-iot-core.svg"; }
             available_in  = [aws];
             applicable_to = [iot_saas_platform];
-            wiki          = "aws-iot-core.md";
+            annotate wiki { path = "wiki/aws-iot-core.md"; }
         }
 
         technology aws_iot_device_defender
@@ -2070,7 +2070,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-iot-device-defender.svg"; }
             available_in  = [aws];
             applicable_to = [iot_security_monitor];
-            wiki          = "aws-iot-device-defender.md";
+            annotate wiki { path = "wiki/aws-iot-device-defender.md"; }
         }
 
         technology aws_iot_device_management
@@ -2079,7 +2079,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-iot-device-management.svg"; }
             available_in  = [aws];
             applicable_to = [iot_saas_platform];
-            wiki          = "aws-iot-device-management.md";
+            annotate wiki { path = "wiki/aws-iot-device-management.md"; }
         }
 
         technology aws_iot_events
@@ -2088,7 +2088,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-iot-events.svg"; }
             available_in  = [aws];
             applicable_to = [event_processor];
-            wiki          = "aws-iot-events.md";
+            annotate wiki { path = "wiki/aws-iot-events.md"; }
         }
 
         technology aws_iot_expresslink
@@ -2097,7 +2097,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-iot-expresslink.svg"; }
             available_in  = [aws];
             applicable_to = [iot_saas_platform];
-            wiki          = "aws-iot-expresslink.md";
+            annotate wiki { path = "wiki/aws-iot-expresslink.md"; }
         }
 
         technology aws_iot_fleetwise
@@ -2106,7 +2106,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-iot-fleetwise.svg"; }
             available_in  = [aws];
             applicable_to = [iot_saas_platform];
-            wiki          = "aws-iot-fleetwise.md";
+            annotate wiki { path = "wiki/aws-iot-fleetwise.md"; }
         }
 
         technology aws_iot_greengrass
@@ -2115,7 +2115,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-iot-greengrass.svg"; }
             available_in  = [aws];
             applicable_to = [iot_edge_runtime];
-            wiki          = "aws-iot-greengrass.md";
+            annotate wiki { path = "wiki/aws-iot-greengrass.md"; }
         }
 
         technology aws_iot_sitewise
@@ -2124,7 +2124,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-iot-sitewise.svg"; }
             available_in  = [aws];
             applicable_to = [iot_saas_platform];
-            wiki          = "aws-iot-sitewise.md";
+            annotate wiki { path = "wiki/aws-iot-sitewise.md"; }
         }
 
         technology aws_iot_twinmaker
@@ -2133,7 +2133,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-iot-twinmaker.svg"; }
             available_in  = [aws];
             applicable_to = [digital_twin_store];
-            wiki          = "aws-iot-twinmaker.md";
+            annotate wiki { path = "wiki/aws-iot-twinmaker.md"; }
         }
 
         technology aws_partner_device_catalog
@@ -2141,7 +2141,7 @@ namespace libraries.aws
             label         = "AWS Partner Device Catalog";
             available_in  = [aws];
             applicable_to = [enterprise_api_catalogue];
-            wiki          = "aws-partner-device-catalog.md";
+            annotate wiki { path = "wiki/aws-partner-device-catalog.md"; }
         }
 
         technology freertos
@@ -2150,7 +2150,7 @@ namespace libraries.aws
             annotate icon { path = "resources/freertos.svg"; }
             available_in  = [aws];
             applicable_to = [embedded_iot_os];
-            wiki          = "freertos.md";
+            annotate wiki { path = "wiki/freertos.md"; }
         }
 
         // ── Migration and transfer ──────────────────────────────────
@@ -2160,7 +2160,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-application-discovery.svg"; }
             available_in  = [aws];
             applicable_to = [migration_assessment_service];
-            wiki          = "aws-application-discovery.md";
+            annotate wiki { path = "wiki/aws-application-discovery.md"; }
         }
 
         technology aws_application_migration
@@ -2169,7 +2169,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-application-migration.svg"; }
             available_in  = [aws];
             applicable_to = [migration_assessment_service];
-            wiki          = "aws-application-migration.md";
+            annotate wiki { path = "wiki/aws-application-migration.md"; }
         }
 
         technology aws_database_migration_service
@@ -2178,7 +2178,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-database-migration-service.svg"; }
             available_in  = [aws];
             applicable_to = [database_migration_service];
-            wiki          = "aws-database-migration-service.md";
+            annotate wiki { path = "wiki/aws-database-migration-service.md"; }
         }
 
         technology aws_datasync
@@ -2187,7 +2187,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-datasync.svg"; }
             available_in  = [aws];
             applicable_to = [migration_assessment_service];
-            wiki          = "aws-datasync.md";
+            annotate wiki { path = "wiki/aws-datasync.md"; }
         }
 
         technology aws_mainframe_modernization
@@ -2196,7 +2196,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-mainframe-modernization.svg"; }
             available_in  = [aws];
             applicable_to = [migration_assessment_service];
-            wiki          = "aws-mainframe-modernization.md";
+            annotate wiki { path = "wiki/aws-mainframe-modernization.md"; }
         }
 
         technology aws_migration_hub
@@ -2205,7 +2205,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-migration-hub.svg"; }
             available_in  = [aws];
             applicable_to = [migration_assessment_service];
-            wiki          = "aws-migration-hub.md";
+            annotate wiki { path = "wiki/aws-migration-hub.md"; }
         }
 
         technology aws_snow_family
@@ -2214,7 +2214,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-snow-family.svg"; }
             available_in  = [aws];
             applicable_to = [bulk_data_import_appliance];
-            wiki          = "aws-snow-family.md";
+            annotate wiki { path = "wiki/aws-snow-family.md"; }
         }
 
         technology aws_snowball
@@ -2223,7 +2223,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-snowball.svg"; }
             available_in  = [aws];
             applicable_to = [bulk_data_import_appliance];
-            wiki          = "aws-snowball.md";
+            annotate wiki { path = "wiki/aws-snowball.md"; }
         }
 
         technology aws_snowball_edge
@@ -2232,7 +2232,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-snowball-edge.svg"; }
             available_in  = [aws];
             applicable_to = [bulk_data_import_appliance, iot_edge_runtime];
-            wiki          = "aws-snowball-edge.md";
+            annotate wiki { path = "wiki/aws-snowball-edge.md"; }
         }
 
         technology aws_transfer_family
@@ -2241,7 +2241,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-transfer-family.svg"; }
             available_in  = [aws];
             applicable_to = [integration_adapter];
-            wiki          = "aws-transfer-family.md";
+            annotate wiki { path = "wiki/aws-transfer-family.md"; }
         }
 
         // ── Cloud financial management ──────────────────────────────
@@ -2251,7 +2251,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-billing-conductor.svg"; }
             available_in  = [aws];
             applicable_to = [cost_management_service];
-            wiki          = "aws-billing-conductor.md";
+            annotate wiki { path = "wiki/aws-billing-conductor.md"; }
         }
 
         technology aws_budgets
@@ -2260,7 +2260,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-budgets.svg"; }
             available_in  = [aws];
             applicable_to = [cost_management_service];
-            wiki          = "aws-budgets.md";
+            annotate wiki { path = "wiki/aws-budgets.md"; }
         }
 
         technology aws_cost_and_usage_report
@@ -2269,7 +2269,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-cost-and-usage-report.svg"; }
             available_in  = [aws];
             applicable_to = [cost_management_service];
-            wiki          = "aws-cost-and-usage-report.md";
+            annotate wiki { path = "wiki/aws-cost-and-usage-report.md"; }
         }
 
         technology aws_cost_explorer
@@ -2278,7 +2278,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-cost-explorer.svg"; }
             available_in  = [aws];
             applicable_to = [cost_management_service];
-            wiki          = "aws-cost-explorer.md";
+            annotate wiki { path = "wiki/aws-cost-explorer.md"; }
         }
 
         technology reserved_instance_reporting
@@ -2287,7 +2287,7 @@ namespace libraries.aws
             annotate icon { path = "resources/reserved-instance-reporting.svg"; }
             available_in  = [aws];
             applicable_to = [cost_management_service];
-            wiki          = "reserved-instance-reporting.md";
+            annotate wiki { path = "wiki/reserved-instance-reporting.md"; }
         }
 
         technology savings_plans
@@ -2296,7 +2296,7 @@ namespace libraries.aws
             annotate icon { path = "resources/savings-plans.svg"; }
             available_in  = [aws];
             applicable_to = [cost_management_service];
-            wiki          = "savings-plans.md";
+            annotate wiki { path = "wiki/savings-plans.md"; }
         }
 
         // ── Customer enablement, game tech, quantum, blockchain, satellite ──
@@ -2306,7 +2306,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-managed-services.svg"; }
             available_in  = [aws];
             applicable_to = [hybrid_resource_manager];
-            wiki          = "aws-managed-services.md";
+            annotate wiki { path = "wiki/aws-managed-services.md"; }
         }
 
         technology aws_repost_private
@@ -2315,7 +2315,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-repost-private.svg"; }
             available_in  = [aws];
             applicable_to = [knowledge_source];
-            wiki          = "aws-repost-private.md";
+            annotate wiki { path = "wiki/aws-repost-private.md"; }
         }
 
         technology amazon_gamelift
@@ -2324,7 +2324,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-gamelift.svg"; }
             available_in  = [aws];
             applicable_to = [hosting_fabric];
-            wiki          = "amazon-gamelift.md";
+            annotate wiki { path = "wiki/amazon-gamelift.md"; }
         }
 
         technology amazon_braket
@@ -2333,7 +2333,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-braket.svg"; }
             available_in  = [aws];
             applicable_to = [quantum_compute_service];
-            wiki          = "amazon-braket.md";
+            annotate wiki { path = "wiki/amazon-braket.md"; }
         }
 
         technology amazon_managed_blockchain
@@ -2342,7 +2342,7 @@ namespace libraries.aws
             annotate icon { path = "resources/amazon-managed-blockchain.svg"; }
             available_in  = [aws];
             applicable_to = [confidential_ledger];
-            wiki          = "amazon-managed-blockchain.md";
+            annotate wiki { path = "wiki/amazon-managed-blockchain.md"; }
         }
 
         technology aws_ground_station
@@ -2351,7 +2351,7 @@ namespace libraries.aws
             annotate icon { path = "resources/aws-ground-station.svg"; }
             available_in  = [aws];
             applicable_to = [iot_saas_platform];
-            wiki          = "aws-ground-station.md";
+            annotate wiki { path = "wiki/aws-ground-station.md"; }
         }
     }
 }

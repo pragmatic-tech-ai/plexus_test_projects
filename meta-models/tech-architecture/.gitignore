@@ -1,2 +1,5 @@
 # User-specific project-local property bags (connections, selections) — never commit.
 project.local.json
+
+# Build output (npm-package compile / publish staging) — regenerable, never source.
+dist/

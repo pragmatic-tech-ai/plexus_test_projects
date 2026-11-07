@@ -3,37 +3,43 @@ namespace ai_assistant_m365.models
   import libraries.evelyn;
   import libraries.microsoft;
   import tech_architecture;
-  model ai_assistant_m365ModelsModel : libraries.evelyn uses categories, microsoft_tech conforms Scenarios {
+  model ai_assistant_m365ModelsModel : libraries.evelyn uses libraries.microsoft.microsoft_tech, tech_architecture.categories conforms tech_architecture.Scenarios {
     component component1 {
       label = "Copilot Studio";
-      implemented_by = microsoft_tech.copilot_studio;
-      in = microsoft_tech.power_platform;
-      category = categories.agent_authoring_studio;
+      implemented_by = libraries.microsoft.microsoft_tech.copilot_studio;
+      in = libraries.microsoft.microsoft_tech.power_platform;
+      category = tech_architecture.categories.agent_authoring_studio;
     }
     component component2 {
       label = "Microsoft Entra ID";
-      implemented_by = microsoft_tech.microsoft_entra_id;
-      in = microsoft_tech.azure;
-      category = categories.federated_identity_provider;
+      implemented_by = libraries.microsoft.microsoft_tech.microsoft_entra_id;
+      in = libraries.microsoft.microsoft_tech.azure;
+      category = tech_architecture.categories.federated_identity_provider;
     }
     component component3 {
       label = "Microsoft Entra ID Protection";
-      implemented_by = microsoft_tech.microsoft_entra_id_protection;
-      in = microsoft_tech.azure;
-      category = categories.identity_threat_detection;
+      implemented_by = libraries.microsoft.microsoft_tech.microsoft_entra_id_protection;
+      in = libraries.microsoft.microsoft_tech.azure;
+      category = tech_architecture.categories.identity_threat_detection;
     }
     component component4 {
       label = "Microsoft Entra ID Governance";
-      implemented_by = microsoft_tech.microsoft_entra_id_governance;
-      in = microsoft_tech.azure;
-      category = categories.authorization_service;
+      implemented_by = libraries.microsoft.microsoft_tech.microsoft_entra_id_governance;
+      in = libraries.microsoft.microsoft_tech.azure;
+      category = tech_architecture.categories.authorization_service;
     }
     component component6 {
       label = "Power Automate";
-      implemented_by = microsoft_tech.power_automate;
-      in = microsoft_tech.power_platform;
-      category = categories.workflow_engine;
+      implemented_by = libraries.microsoft.microsoft_tech.power_automate;
+      in = libraries.microsoft.microsoft_tech.power_platform;
+      category = tech_architecture.categories.workflow_engine;
     }
     component2 --> component2;
+    component component5 {
+      label = "AI Foundry Multi-Agent";
+      implemented_by = libraries.microsoft.microsoft_tech.ai_foundry_multi_agent;
+      in = libraries.microsoft.microsoft_tech.azure;
+      category = tech_architecture.categories.ai_agent;
+    }
   }
 }

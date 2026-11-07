@@ -3,16 +3,16 @@ namespace ai_assistant_m365.models
   import libraries.evelyn;
   import libraries.microsoft;
   import tech_architecture;
-  model ai_assistant_m365ModelsModel : libraries.evelyn uses actors, microsoft_tech conforms Model {
+  model ai_assistant_m365ModelsModel : libraries.evelyn uses libraries.microsoft.microsoft_tech, tech_architecture.actors conforms tech_architecture.Model {
     tenant contoso_tenant {
       label = "Contoso M365 Tenant";
       region = "eastus";
-      in = microsoft_tech.m365;
+      in = libraries.microsoft.microsoft_tech.m365;
     }
     subscription m365_sub {
       label = "Contoso M365 Subscription";
       region = "eastus";
-      in = microsoft_tech.m365;
+      in = libraries.microsoft.microsoft_tech.m365;
       in_tenant = contoso_tenant;
     }
     resource_group m365_rg {
@@ -29,8 +29,8 @@ namespace ai_assistant_m365.models
     }
     component teams {
       label = "Microsoft Teams";
-      in = microsoft_tech.m365;
-      implemented_by = microsoft_tech.microsoft_teams;
+      in = libraries.microsoft.microsoft_tech.m365;
+      implemented_by = libraries.microsoft.microsoft_tech.microsoft_teams;
       slots = teams_prod;
     }
     slot teams_prod {
@@ -40,8 +40,8 @@ namespace ai_assistant_m365.models
     }
     component m365_copilot {
       label = "M365 Copilot";
-      in = microsoft_tech.m365;
-      implemented_by = microsoft_tech.m365_copilot;
+      in = libraries.microsoft.microsoft_tech.m365;
+      implemented_by = libraries.microsoft.microsoft_tech.m365_copilot;
       slots = m365_copilot_prod;
     }
     slot m365_copilot_prod {
@@ -51,8 +51,8 @@ namespace ai_assistant_m365.models
     }
     component copilot_studio {
       label = "Copilot Studio";
-      in = microsoft_tech.m365;
-      implemented_by = microsoft_tech.copilot_studio;
+      in = libraries.microsoft.microsoft_tech.m365;
+      implemented_by = libraries.microsoft.microsoft_tech.copilot_studio;
       slots = copilot_studio_prod;
     }
     slot copilot_studio_prod {
@@ -62,8 +62,8 @@ namespace ai_assistant_m365.models
     }
     component copilot_agent {
       label = "Copilot Agent";
-      in = microsoft_tech.m365;
-      implemented_by = microsoft_tech.copilot_agent;
+      in = libraries.microsoft.microsoft_tech.m365;
+      implemented_by = libraries.microsoft.microsoft_tech.copilot_agent;
       slots = copilot_agent_prod;
     }
     slot copilot_agent_prod {
@@ -73,8 +73,8 @@ namespace ai_assistant_m365.models
     }
     component sharepoint {
       label = "SharePoint";
-      in = microsoft_tech.m365;
-      implemented_by = microsoft_tech.sharepoint_online;
+      in = libraries.microsoft.microsoft_tech.m365;
+      implemented_by = libraries.microsoft.microsoft_tech.sharepoint_online;
       slots = sharepoint_prod;
     }
     slot sharepoint_prod {
@@ -84,8 +84,8 @@ namespace ai_assistant_m365.models
     }
     component onedrive {
       label = "OneDrive";
-      in = microsoft_tech.m365;
-      implemented_by = microsoft_tech.onedrive;
+      in = libraries.microsoft.microsoft_tech.m365;
+      implemented_by = libraries.microsoft.microsoft_tech.onedrive;
       slots = onedrive_prod;
     }
     slot onedrive_prod {
@@ -95,8 +95,8 @@ namespace ai_assistant_m365.models
     }
     component power_bi {
       label = "Power BI";
-      in = microsoft_tech.m365;
-      implemented_by = microsoft_tech.power_bi;
+      in = libraries.microsoft.microsoft_tech.m365;
+      implemented_by = libraries.microsoft.microsoft_tech.power_bi;
       slots = power_bi_prod;
     }
     slot power_bi_prod {
@@ -122,7 +122,7 @@ namespace ai_assistant_m365.models
     sharepoint --> power_bi {
       natural = "Behavioral and \nQuailty metrics";
     };
-    power_bi --> actors.administration {
+    power_bi --> tech_architecture.actors.administration {
       natural = "Conversational \nData Analysis";
     };
   }

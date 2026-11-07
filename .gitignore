@@ -4,3 +4,6 @@
 architecures/**/*.svg
 architecures/**/*.pptx
 architecures/**/*.png
+
+# Build output (TODL app / package compile) - regenerable, never source.
+build/
